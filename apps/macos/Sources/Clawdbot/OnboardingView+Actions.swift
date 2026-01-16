@@ -111,7 +111,7 @@ extension OnboardingView {
                 verifier: pkce.verifier)
             try ClawdbotOAuthStore.saveAnthropicOAuth(creds)
             self.refreshAnthropicOAuthStatus()
-            self.anthropicAuthStatus = "Connected. Clawdbot can now use Claude."
+            self.anthropicAuthStatus = "Connected. Farm Friend Terminal can now use Claude."
         } catch {
             self.anthropicAuthStatus = "OAuth failed: \(error.localizedDescription)"
         }

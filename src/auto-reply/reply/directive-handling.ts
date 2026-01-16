@@ -61,7 +61,7 @@ import {
   resolveQueueSettings,
 } from "./queue.js";
 
-const SYSTEM_MARK = "⚙️";
+const SYSTEM_MARK = "System:";
 export const formatDirectiveAck = (text: string): string => {
   if (!text) return text;
   if (text.startsWith(SYSTEM_MARK)) return text;

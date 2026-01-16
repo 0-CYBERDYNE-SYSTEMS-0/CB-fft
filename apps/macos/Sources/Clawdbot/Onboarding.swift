@@ -7,7 +7,7 @@ import Observation
 import SwiftUI
 
 enum UIStrings {
-    static let welcomeTitle = "Welcome to Clawdbot"
+    static let welcomeTitle = "Welcome to Farm Friend Terminal"
 }
 
 @MainActor

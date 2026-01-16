@@ -188,7 +188,7 @@ export const signalOnboardingAdapter: ProviderOnboardingAdapter = {
 
     await prompter.note(
       [
-        'Link device with: signal-cli link -n "Clawdbot"',
+        'Link device with: signal-cli link -n "Farm Friend Terminal"',
         "Scan QR in Signal → Linked Devices",
         "Then run: clawdbot gateway call providers.status --params '{\"probe\":true}'",
         `Docs: ${formatDocsLink("/signal", "signal")}`,

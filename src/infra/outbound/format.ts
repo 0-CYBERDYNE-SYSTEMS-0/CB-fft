@@ -34,11 +34,11 @@ export function formatOutboundDeliverySummary(
   result?: OutboundDeliveryResult,
 ): string {
   if (!result) {
-    return `✅ Sent via ${resolveProviderLabel(provider)}. Message ID: unknown`;
+    return `Sent via ${resolveProviderLabel(provider)}. Message ID: unknown`;
   }
 
   const label = resolveProviderLabel(result.provider);
-  const base = `✅ Sent via ${label}. Message ID: ${result.messageId}`;
+  const base = `Sent via ${label}. Message ID: ${result.messageId}`;
 
   if ("chatId" in result) return `${base} (chat ${result.chatId})`;
   if ("channelId" in result) return `${base} (channel ${result.channelId})`;
@@ -98,5 +98,5 @@ export function formatGatewaySummary(params: {
   const action = params.action ?? "Sent";
   const providerSuffix = params.provider ? ` (${params.provider})` : "";
   const messageId = params.messageId ?? "unknown";
-  return `✅ ${action} via gateway${providerSuffix}. Message ID: ${messageId}`;
+  return `${action} via gateway${providerSuffix}. Message ID: ${messageId}`;
 }

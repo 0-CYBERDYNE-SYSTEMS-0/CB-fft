@@ -48,7 +48,11 @@ data class ToolDisplaySummary(
     }
 
   val summaryLine: String
-    get() = if (detailLine != null) "${emoji} ${label}: ${detailLine}" else "${emoji} ${label}"
+    get() {
+      val marker = emoji.trim()
+      val prefix = if (marker.isEmpty()) "" else "$marker "
+      return if (detailLine != null) "${prefix}${label}: ${detailLine}" else "${prefix}${label}"
+    }
 }
 
 object ToolDisplayRegistry {
@@ -69,7 +73,7 @@ object ToolDisplayRegistry {
     val spec = config.tools?.get(key)
     val fallback = config.fallback
 
-    val emoji = spec?.emoji ?: fallback?.emoji ?: "🧩"
+    val emoji = (spec?.emoji ?: fallback?.emoji ?: "").trim()
     val title = spec?.title ?: titleFromName(trimmedName)
     val label = spec?.label ?: trimmedName
 

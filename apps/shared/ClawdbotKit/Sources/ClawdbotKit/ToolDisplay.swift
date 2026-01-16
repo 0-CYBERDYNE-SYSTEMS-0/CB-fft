@@ -16,10 +16,12 @@ public struct ToolDisplaySummary: Sendable, Equatable {
     }
 
     public var summaryLine: String {
+        let marker = self.emoji.trimmingCharacters(in: .whitespacesAndNewlines)
+        let prefix = marker.isEmpty ? "" : "\(marker) "
         if let detailLine {
-            return "\(self.emoji) \(self.label): \(detailLine)"
+            return "\(prefix)\(self.label): \(detailLine)"
         }
-        return "\(self.emoji) \(self.label)"
+        return "\(prefix)\(self.label)"
     }
 }
 
@@ -51,7 +53,7 @@ public enum ToolDisplayRegistry {
         let spec = self.config.tools?[key]
         let fallback = self.config.fallback
 
-        let emoji = spec?.emoji ?? fallback?.emoji ?? "🧩"
+        let emoji = (spec?.emoji ?? fallback?.emoji ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         let title = spec?.title ?? self.titleFromName(trimmedName)
         let label = spec?.label ?? trimmedName
 
@@ -105,7 +107,7 @@ public enum ToolDisplayRegistry {
         ToolDisplayConfig(
             version: 1,
             fallback: ToolDisplaySpec(
-                emoji: "🧩",
+                emoji: "",
                 title: nil,
                 label: nil,
                 detailKeys: [
@@ -132,37 +134,37 @@ public enum ToolDisplayRegistry {
                 actions: nil),
             tools: [
                 "bash": ToolDisplaySpec(
-                    emoji: "🛠️",
+                    emoji: "",
                     title: "Bash",
                     label: nil,
                     detailKeys: ["command"],
                     actions: nil),
                 "read": ToolDisplaySpec(
-                    emoji: "📖",
+                    emoji: "",
                     title: "Read",
                     label: nil,
                     detailKeys: ["path"],
                     actions: nil),
                 "write": ToolDisplaySpec(
-                    emoji: "✍️",
+                    emoji: "",
                     title: "Write",
                     label: nil,
                     detailKeys: ["path"],
                     actions: nil),
                 "edit": ToolDisplaySpec(
-                    emoji: "📝",
+                    emoji: "",
                     title: "Edit",
                     label: nil,
                     detailKeys: ["path"],
                     actions: nil),
                 "attach": ToolDisplaySpec(
-                    emoji: "📎",
+                    emoji: "",
                     title: "Attach",
                     label: nil,
                     detailKeys: ["path", "url", "fileName"],
                     actions: nil),
                 "process": ToolDisplaySpec(
-                    emoji: "🧰",
+                    emoji: "",
                     title: "Process",
                     label: nil,
                     detailKeys: ["sessionId"],

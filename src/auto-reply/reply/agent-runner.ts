@@ -122,7 +122,7 @@ const isBunFetchSocketError = (message?: string) =>
 const formatBunFetchSocketError = (message: string) => {
   const trimmed = message.trim();
   return [
-    "⚠️ LLM connection failed. This could be due to server issues, network problems, or context length exceeded (e.g., with local LLMs like LM Studio). Original error:",
+    "Warning: LLM connection failed. This could be due to server issues, network problems, or context length exceeded (e.g., with local LLMs like LM Studio). Original error:",
     "```",
     trimmed || "Unknown error",
     "```",
@@ -868,15 +868,15 @@ export async function runReplyAgent(params: {
           }
 
           return finalizeWithFollowup({
-            text: "⚠️ Session history was corrupted. I've reset the conversation - please try again!",
+            text: "Warning: Session history was corrupted. I've reset the conversation - please try again!",
           });
         }
 
         defaultRuntime.error(`Embedded agent failed before reply: ${message}`);
         return finalizeWithFollowup({
           text: isContextOverflow
-            ? "⚠️ Context overflow - conversation too long. Starting fresh might help!"
-            : `⚠️ Agent failed before reply: ${message}. Check gateway logs for details.`,
+            ? "Warning: Context overflow - conversation too long. Starting fresh might help!"
+            : `Warning: Agent failed before reply: ${message}. Check gateway logs for details.`,
         });
       }
     }
@@ -1116,14 +1116,14 @@ export async function runReplyAgent(params: {
       if (resolvedVerboseLevel === "on") {
         const suffix = typeof count === "number" ? ` (count ${count})` : "";
         finalPayloads = [
-          { text: `🧹 Auto-compaction complete${suffix}.` },
+          { text: `Auto-compaction complete${suffix}.` },
           ...finalPayloads,
         ];
       }
     }
     if (resolvedVerboseLevel === "on" && activeIsNewSession) {
       finalPayloads = [
-        { text: `🧭 New session: ${followupRun.run.sessionId}` },
+        { text: `New session: ${followupRun.run.sessionId}` },
         ...finalPayloads,
       ];
     }

@@ -188,8 +188,8 @@ export function logWs(
   const statusToken =
     kind === "res" && ok !== undefined
       ? ok
-        ? chalk.greenBright("✓")
-        : chalk.redBright("✗")
+        ? chalk.greenBright("OK")
+        : chalk.redBright("ERR")
       : undefined;
 
   const durationToken =
@@ -247,7 +247,7 @@ function logWsOptimized(
       typeof meta?.error === "string" ? formatForLog(meta.error) : undefined;
     console.log(
       [
-        `${chalk.gray("[gws]")} ${chalk.redBright("✗")} ${chalk.bold("parse-error")}`,
+        `${chalk.gray("[gws]")} ${chalk.redBright("ERR")} ${chalk.bold("parse-error")}`,
         errorMsg ? `${chalk.dim("error")}=${errorMsg}` : undefined,
         `${chalk.dim("conn")}=${chalk.gray(shortId(connId ?? "?"))}`,
       ]
@@ -275,8 +275,8 @@ function logWsOptimized(
     ok === undefined
       ? undefined
       : ok
-        ? chalk.greenBright("✓")
-        : chalk.redBright("✗");
+        ? chalk.greenBright("OK")
+        : chalk.redBright("ERR");
   const durationToken =
     typeof durationMs === "number" ? chalk.dim(`${durationMs}ms`) : undefined;
 
@@ -336,8 +336,8 @@ function logWsCompact(
   const statusToken =
     kind === "res" && ok !== undefined
       ? ok
-        ? chalk.greenBright("✓")
-        : chalk.redBright("✗")
+        ? chalk.greenBright("OK")
+        : chalk.redBright("ERR")
       : undefined;
 
   const startedAt =

@@ -420,6 +420,7 @@ export class ClawdbotApp extends LitElement {
     this.basePath = this.inferBasePath();
     this.syncTabWithLocation(true);
     this.syncThemeWithSettings();
+    this.applyFieldMode(this.settings.fieldMode);
     this.attachThemeListener();
     window.addEventListener("popstate", this.popStateHandler);
     this.applySettingsFromUrl();
@@ -615,7 +616,7 @@ export class ClawdbotApp extends LitElement {
     const anchor = document.createElement("a");
     const stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
     anchor.href = url;
-    anchor.download = `clawdbot-logs-${label}-${stamp}.log`;
+    anchor.download = `farm-friend-logs-${label}-${stamp}.log`;
     anchor.click();
     URL.revokeObjectURL(url);
   }
@@ -817,6 +818,7 @@ export class ClawdbotApp extends LitElement {
       this.theme = next.theme;
       this.applyResolvedTheme(resolveTheme(next.theme));
     }
+    this.applyFieldMode(next.fieldMode);
     this.applySessionKey = this.settings.lastActiveSessionKey;
   }
 
@@ -938,6 +940,12 @@ export class ClawdbotApp extends LitElement {
     const root = document.documentElement;
     root.dataset.theme = resolved;
     root.style.colorScheme = resolved;
+  }
+
+  private applyFieldMode(enabled: boolean) {
+    if (typeof document === "undefined") return;
+    const root = document.documentElement;
+    root.dataset.fieldMode = enabled ? "true" : "false";
   }
 
   private attachThemeListener() {

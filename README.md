@@ -1,11 +1,11 @@
-# 🦞 Clawdbot — Personal AI Assistant
+# Farm Friend Terminal — Farm Operations Assistant
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/clawdbot/clawdbot/main/docs/whatsapp-clawd.jpg" alt="Clawdbot" width="400">
+  <img src="https://raw.githubusercontent.com/clawdbot/clawdbot/main/docs/whatsapp-clawd.jpg" alt="Farm Friend Terminal" width="400">
 </p>
 
 <p align="center">
-  <strong>EXFOLIATE! EXFOLIATE!</strong>
+  <strong>Neighborly, practical, and professional — a farm‑savvy assistant.</strong>
 </p>
 
 <p align="center">
@@ -15,7 +15,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
 </p>
 
-**Clawdbot** is a *personal AI assistant* you run on your own devices.
+**Farm Friend Terminal** is a *farm‑savvy operations assistant* you run on your own devices.
 It answers you on the providers you already use (WhatsApp, Telegram, Slack, Discord, Signal, iMessage, WebChat), can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
@@ -62,7 +62,7 @@ clawdbot onboard --install-daemon
 clawdbot gateway --port 18789 --verbose
 
 # Send a message
-clawdbot message send --to +1234567890 --message "Hello from Clawdbot"
+clawdbot message send --to +1234567890 --message "Hello from Farm Friend Terminal"
 
 # Talk to the assistant (optionally deliver back to WhatsApp/Telegram/Slack/Discord)
 clawdbot agent --message "Ship checklist" --thinking high
@@ -92,7 +92,7 @@ Note: `pnpm clawdbot ...` runs TypeScript directly (via `tsx`). `pnpm build` pro
 
 ## Security defaults (DM access)
 
-Clawdbot connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
+Farm Friend Terminal connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
 
 Full security guide: [Security](https://docs.clawd.bot/gateway/security)
 
@@ -182,14 +182,14 @@ WhatsApp / Telegram / Slack / Discord / Signal / iMessage / WebChat
 
 ## Tailscale access (Gateway dashboard)
 
-Clawdbot can auto-configure Tailscale **Serve** (tailnet-only) or **Funnel** (public) while the Gateway stays bound to loopback. Configure `gateway.tailscale.mode`:
+Farm Friend Terminal can auto-configure Tailscale **Serve** (tailnet-only) or **Funnel** (public) while the Gateway stays bound to loopback. Configure `gateway.tailscale.mode`:
 
 - `off`: no Tailscale automation (default).
 - `serve`: tailnet-only HTTPS via `tailscale serve` (uses Tailscale identity headers by default).
 - `funnel`: public HTTPS via `tailscale funnel` (requires shared password auth).
 
 Notes:
-- `gateway.bind` must stay `loopback` when Serve/Funnel is enabled (Clawdbot enforces this).
+- `gateway.bind` must stay `loopback` when Serve/Funnel is enabled (the Gateway enforces this).
 - Serve can be forced to require a password by setting `gateway.auth.mode: "password"` or `gateway.auth.allowTailscale: false`.
 - Funnel refuses to start unless `gateway.auth.mode: "password"` is set.
 - Optional: `gateway.tailscale.resetOnExit` to undo Serve/Funnel on shutdown.
@@ -260,7 +260,7 @@ git submodule update --init --recursive
 ./scripts/restart-mac.sh
 ```
 
-### macOS (Clawdbot.app) (optional)
+### macOS (Farm Friend Terminal.app) (optional)
 
 - Menu bar control for the Gateway and health.
 - Voice Wake + push-to-talk overlay.
@@ -441,7 +441,7 @@ Use these when you’re past the onboarding flow and want the deeper reference.
 
 ## Clawd
 
-Clawdbot was built for **Clawd**, a space lobster AI assistant. 🦞  
+Farm Friend Terminal is designed for a farm‑savvy assistant persona, with a focus on practical outcomes.  
 by Peter Steinberger and the community.
 
 - [clawd.me](https://clawd.me)

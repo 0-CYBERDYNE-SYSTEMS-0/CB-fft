@@ -1,7 +1,7 @@
 {
   "version": 1,
   "fallback": {
-    "emoji": "🧩",
+    "emoji": "",
     "detailKeys": [
       "command",
       "path",
@@ -26,37 +26,37 @@
   },
   "tools": {
     "bash": {
-      "emoji": "🛠️",
+      "emoji": "",
       "title": "Bash",
       "detailKeys": ["command"]
     },
     "process": {
-      "emoji": "🧰",
+      "emoji": "",
       "title": "Process",
       "detailKeys": ["sessionId"]
     },
     "read": {
-      "emoji": "📖",
+      "emoji": "",
       "title": "Read",
       "detailKeys": ["path"]
     },
     "write": {
-      "emoji": "✍️",
+      "emoji": "",
       "title": "Write",
       "detailKeys": ["path"]
     },
     "edit": {
-      "emoji": "📝",
+      "emoji": "",
       "title": "Edit",
       "detailKeys": ["path"]
     },
     "attach": {
-      "emoji": "📎",
+      "emoji": "",
       "title": "Attach",
       "detailKeys": ["path", "url", "fileName"]
     },
     "browser": {
-      "emoji": "🌐",
+      "emoji": "",
       "title": "Browser",
       "actions": {
         "status": { "label": "status" },
@@ -95,7 +95,7 @@
       }
     },
     "canvas": {
-      "emoji": "🖼️",
+      "emoji": "",
       "title": "Canvas",
       "actions": {
         "present": { "label": "present", "detailKeys": ["target", "node", "nodeId"] },
@@ -108,7 +108,7 @@
       }
     },
     "nodes": {
-      "emoji": "📱",
+      "emoji": "",
       "title": "Nodes",
       "actions": {
         "status": { "label": "status" },
@@ -127,7 +127,7 @@
       }
     },
     "cron": {
-      "emoji": "⏰",
+      "emoji": "",
       "title": "Cron",
       "actions": {
         "status": { "label": "status" },
@@ -144,14 +144,14 @@
       }
     },
     "gateway": {
-      "emoji": "🔌",
+      "emoji": "",
       "title": "Gateway",
       "actions": {
         "restart": { "label": "restart", "detailKeys": ["reason", "delayMs"] }
       }
     },
     "whatsapp_login": {
-      "emoji": "🟢",
+      "emoji": "",
       "title": "WhatsApp Login",
       "actions": {
         "start": { "label": "start" },
@@ -159,7 +159,7 @@
       }
     },
     "discord": {
-      "emoji": "💬",
+      "emoji": "",
       "title": "Discord",
       "actions": {
         "react": { "label": "react", "detailKeys": ["channelId", "messageId", "emoji"] },

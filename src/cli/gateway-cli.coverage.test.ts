@@ -141,7 +141,7 @@ describe("gateway-cli coverage", () => {
     discoverGatewayBeacons.mockReset();
     discoverGatewayBeacons.mockResolvedValueOnce([
       {
-        instanceName: "Studio (Clawdbot)",
+        instanceName: "Studio (Farm Friend Terminal)",
         displayName: "Studio",
         domain: "local.",
         host: "studio.local",
@@ -174,7 +174,7 @@ describe("gateway-cli coverage", () => {
     discoverGatewayBeacons.mockReset();
     discoverGatewayBeacons.mockResolvedValueOnce([
       {
-        instanceName: "Studio (Clawdbot)",
+        instanceName: "Studio (Farm Friend Terminal)",
         displayName: "Studio",
         domain: "clawdbot.internal.",
         host: "studio.clawdbot.internal",

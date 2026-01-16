@@ -126,7 +126,7 @@ describe("dispatchReplyFromConfig", () => {
 
     expect(replyResolver).not.toHaveBeenCalled();
     expect(dispatcher.sendFinalReply).toHaveBeenCalledWith({
-      text: "⚙️ Agent was aborted.",
+      text: "System: Agent was aborted.",
     });
   });
 

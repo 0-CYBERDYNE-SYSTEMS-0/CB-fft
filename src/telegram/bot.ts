@@ -502,7 +502,7 @@ export function createTelegramBot(opts: TelegramBotOptions) {
                 await bot.api.sendMessage(
                   chatId,
                   [
-                    "Clawdbot: access not configured.",
+                    "Farm Friend Terminal: access not configured.",
                     "",
                     `Your Telegram user id: ${telegramUserId}`,
                     "",
@@ -1369,7 +1369,7 @@ export function createTelegramBot(opts: TelegramBotOptions) {
           await bot.api
             .sendMessage(
               chatId,
-              `⚠️ File too large. Maximum size is ${limitMb}MB.`,
+              `File too large. Maximum size is ${limitMb}MB.`,
               { reply_to_message_id: msg.message_id },
             )
             .catch(() => {});

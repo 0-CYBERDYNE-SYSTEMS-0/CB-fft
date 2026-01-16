@@ -39,11 +39,11 @@ function setSlackDmPolicy(cfg: ClawdbotConfig, dmPolicy: DmPolicy) {
 }
 
 function buildSlackManifest(botName: string) {
-  const safeName = botName.trim() || "Clawdbot";
+  const safeName = botName.trim() || "Farm Friend Terminal";
   const manifest = {
     display_information: {
       name: safeName,
-      description: `${safeName} connector for Clawdbot`,
+      description: `${safeName} connector for Farm Friend Terminal`,
     },
     features: {
       bot_user: {
@@ -57,7 +57,7 @@ function buildSlackManifest(botName: string) {
       slash_commands: [
         {
           command: "/clawd",
-          description: "Send a message to Clawdbot",
+          description: "Send a message to Farm Friend Terminal",
           should_escape: false,
         },
       ],
@@ -197,7 +197,7 @@ export const slackOnboardingAdapter: ProviderOnboardingAdapter = {
     const slackBotName = String(
       await prompter.text({
         message: "Slack bot display name (used for manifest)",
-        initialValue: "Clawdbot",
+        initialValue: "Farm Friend Terminal",
       }),
     ).trim();
     if (!accountConfigured) {

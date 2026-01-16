@@ -230,20 +230,38 @@ export function renderApp(state: AppViewState) {
             title="${state.settings.navCollapsed ? "Expand sidebar" : "Collapse sidebar"}"
             aria-label="${state.settings.navCollapsed ? "Expand sidebar" : "Collapse sidebar"}"
           >
-            <span class="nav-collapse-toggle__icon">☰</span>
+            <span class="nav-collapse-toggle__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+              </svg>
+            </span>
           </button>
           <div class="brand">
-            <div class="brand-title">CLAWDBOT</div>
-            <div class="brand-sub">Gateway Dashboard</div>
+            <div class="brand-title">Farm Friend Terminal</div>
+            <div class="brand-sub">Farm Operations</div>
           </div>
         </div>
         <div class="topbar-status">
           <div class="pill">
             <span class="statusDot ${state.connected ? "ok" : ""}"></span>
-            <span>Health</span>
+            <span>Status</span>
             <span class="mono">${state.connected ? "OK" : "Offline"}</span>
           </div>
           ${renderThemeToggle(state)}
+          <button
+            class="btn btn--sm field-toggle ${state.settings.fieldMode ? "active" : ""}"
+            @click=${() =>
+              state.applySettings({
+                ...state.settings,
+                fieldMode: !state.settings.fieldMode,
+              })}
+            aria-pressed=${state.settings.fieldMode}
+            title="Toggle barn mode"
+          >
+            Barn Mode
+          </button>
         </div>
       </header>
       <aside class="nav ${state.settings.navCollapsed ? "nav--collapsed" : ""}">
@@ -583,7 +601,7 @@ export function renderApp(state: AppViewState) {
         target="_blank"
         rel="noreferrer"
       >
-        Docs
+        Field Guide
       </a>
     </div>
   `;
@@ -611,10 +629,105 @@ function renderTab(state: AppViewState, tab: Tab) {
       }}
       title=${titleForTab(tab)}
     >
-      <span class="nav-item__icon" aria-hidden="true">${iconForTab(tab)}</span>
+      <span class="nav-item__icon" aria-hidden="true">
+        ${renderNavIcon(iconForTab(tab))}
+      </span>
       <span class="nav-item__text">${titleForTab(tab)}</span>
     </a>
   `;
+}
+
+function renderNavIcon(icon: string) {
+  const base = (content: unknown) => html`
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      ${content}
+    </svg>
+  `;
+  switch (icon) {
+    case "chat":
+      return base(
+        html`<path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>`,
+      );
+    case "overview":
+      return base(html`
+        <path d="M3 20h18"></path>
+        <path d="M5 20V10l7-5 7 5v10"></path>
+        <path d="M9 20v-5h6v5"></path>
+      `);
+    case "connections":
+      return base(html`
+        <path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"></path>
+        <path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"></path>
+      `);
+    case "instances":
+      return base(html`
+        <circle cx="12" cy="8" r="2"></circle>
+        <path d="M12 10v10"></path>
+        <path d="M5 5a10 10 0 0 1 14 0"></path>
+        <path d="M7 9a7 7 0 0 1 10 0"></path>
+      `);
+    case "sessions":
+      return base(html`
+        <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+        <path d="M8 8h7"></path>
+        <path d="M8 12h7"></path>
+        <path d="M8 16h5"></path>
+      `);
+    case "cron":
+      return base(
+        html`<circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path>`,
+      );
+    case "skills":
+      return base(html`
+        <path d="M4 20l8-8"></path>
+        <path d="M12 12l6-6"></path>
+        <path d="M16 4h2"></path>
+        <path d="M17 3v2"></path>
+        <path d="M19 6h2"></path>
+        <path d="M20 5v2"></path>
+      `);
+    case "nodes":
+      return base(html`
+        <path d="M3 17h13v-6H7l-4 4z"></path>
+        <circle cx="7" cy="17" r="2"></circle>
+        <circle cx="15" cy="17" r="2"></circle>
+        <path d="M16 11h4l1 3h-5"></path>
+      `);
+    case "config":
+      return base(html`
+        <line x1="5" y1="4" x2="5" y2="20"></line>
+        <line x1="12" y1="4" x2="12" y2="20"></line>
+        <line x1="19" y1="4" x2="19" y2="20"></line>
+        <circle cx="5" cy="9" r="2"></circle>
+        <circle cx="12" cy="15" r="2"></circle>
+        <circle cx="19" cy="8" r="2"></circle>
+      `);
+    case "debug":
+      return base(html`
+        <path d="M4 12h4l2-3 3 6 2-3h5"></path>
+        <circle cx="4" cy="12" r="1"></circle>
+      `);
+    case "logs":
+      return base(html`
+        <line x1="6" y1="7" x2="20" y2="7"></line>
+        <line x1="6" y1="12" x2="20" y2="12"></line>
+        <line x1="6" y1="17" x2="20" y2="17"></line>
+        <circle cx="4" cy="7" r="1"></circle>
+        <circle cx="4" cy="12" r="1"></circle>
+        <circle cx="4" cy="17" r="1"></circle>
+      `);
+    default:
+      return base(html`<rect x="4" y="4" width="16" height="16" rx="3"></rect>`);
+  }
 }
 
 function renderChatControls(state: AppViewState) {

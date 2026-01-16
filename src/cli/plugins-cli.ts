@@ -60,7 +60,7 @@ function formatPluginLine(plugin: PluginRecord, verbose = false): string {
 export function registerPluginsCli(program: Command) {
   const plugins = program
     .command("plugins")
-    .description("Manage Clawdbot plugins/extensions");
+    .description("Manage Farm Friend Terminal plugins/extensions");
 
   plugins
     .command("list")

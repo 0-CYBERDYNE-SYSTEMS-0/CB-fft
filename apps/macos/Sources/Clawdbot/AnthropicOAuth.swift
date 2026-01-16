@@ -18,7 +18,7 @@ enum AnthropicAuthMode: Equatable {
 
     var shortLabel: String {
         switch self {
-        case .oauthFile: "OAuth (Clawdbot token file)"
+        case .oauthFile: "OAuth (Farm Friend Terminal token file)"
         case .oauthEnv: "OAuth (env var)"
         case .apiKeyEnv: "API key (env var)"
         case .missing: "Missing credentials"
@@ -215,12 +215,12 @@ enum ClawdbotOAuthStore {
 
         var shortDescription: String {
             switch self {
-            case .missingFile: "Clawdbot OAuth token file not found"
-            case .unreadableFile: "Clawdbot OAuth token file not readable"
-            case .invalidJSON: "Clawdbot OAuth token file invalid"
-            case .missingProviderEntry: "No Anthropic entry in Clawdbot OAuth token file"
+            case .missingFile: "Farm Friend Terminal OAuth token file not found"
+            case .unreadableFile: "Farm Friend Terminal OAuth token file not readable"
+            case .invalidJSON: "Farm Friend Terminal OAuth token file invalid"
+            case .missingProviderEntry: "No Anthropic entry in Farm Friend Terminal OAuth token file"
             case .missingTokens: "Anthropic entry missing tokens"
-            case .connected: "Clawdbot OAuth credentials found"
+            case .connected: "Farm Friend Terminal OAuth credentials found"
             }
         }
     }

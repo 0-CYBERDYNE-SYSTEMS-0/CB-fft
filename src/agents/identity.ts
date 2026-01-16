@@ -5,7 +5,7 @@ import type {
 } from "../config/config.js";
 import { resolveAgentConfig } from "./agent-scope.js";
 
-const DEFAULT_ACK_REACTION = "👀";
+const DEFAULT_ACK_REACTION = "";
 
 export function resolveAgentIdentity(
   cfg: ClawdbotConfig,

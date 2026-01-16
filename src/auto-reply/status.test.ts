@@ -62,7 +62,7 @@ describe("buildStatusMessage", () => {
     });
     const normalized = normalizeTestText(text);
 
-    expect(normalized).toContain("Clawdbot");
+    expect(normalized).toContain("Farm Friend Terminal");
     expect(normalized).toContain("Model: anthropic/pi:opus");
     expect(normalized).toContain("api-key");
     expect(normalized).toContain("Tokens: 1.2k in / 800 out");
@@ -107,7 +107,7 @@ describe("buildStatusMessage", () => {
 
     const optionsLine = text
       .split("\n")
-      .find((line) => line.trim().startsWith("⚙️"));
+      .find((line) => line.trim().startsWith("System:"));
     expect(optionsLine).toBeTruthy();
     expect(optionsLine).not.toContain("elevated");
   });
@@ -212,7 +212,7 @@ describe("buildStatusMessage", () => {
       sessionKey: "agent:main:main",
       sessionScope: "per-sender",
       queue: { mode: "collect", depth: 0 },
-      usageLine: "📊 Usage: Claude 80% left (5h)",
+      usageLine: "Usage: Claude 80% left (5h)",
       modelAuth: "api-key",
     });
 
@@ -251,7 +251,7 @@ describe("buildStatusMessage", () => {
       modelAuth: "oauth",
     });
 
-    expect(text).not.toContain("💵 Cost:");
+    expect(text).not.toContain("Cost:");
   });
 
   it("prefers cached prompt tokens from the session log", async () => {

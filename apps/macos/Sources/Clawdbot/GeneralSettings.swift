@@ -50,8 +50,8 @@ struct GeneralSettings: View {
 
                 VStack(alignment: .leading, spacing: 12) {
                     SettingsToggleRow(
-                        title: "Clawdbot active",
-                        subtitle: "Pause to stop the Clawdbot gateway; no messages will be processed.",
+                        title: "Farm Friend Terminal active",
+                        subtitle: "Pause to stop the Farm Friend Terminal gateway; no messages will be processed.",
                         binding: self.activeBinding)
 
                     self.connectionSection
@@ -60,12 +60,12 @@ struct GeneralSettings: View {
 
                     SettingsToggleRow(
                         title: "Launch at login",
-                        subtitle: "Automatically start Clawdbot after you sign in.",
+                        subtitle: "Automatically start Farm Friend Terminal after you sign in.",
                         binding: self.$state.launchAtLogin)
 
                     SettingsToggleRow(
                         title: "Show Dock icon",
-                        subtitle: "Keep Clawdbot visible in the Dock instead of menu-bar-only mode.",
+                        subtitle: "Keep Farm Friend Terminal visible in the Dock instead of menu-bar-only mode.",
                         binding: self.$state.showDockIcon)
 
                     SettingsToggleRow(
@@ -117,7 +117,7 @@ struct GeneralSettings: View {
                 Spacer(minLength: 12)
                 HStack {
                     Spacer()
-                    Button("Quit Clawdbot") { NSApp.terminate(nil) }
+                    Button("Quit Farm Friend Terminal") { NSApp.terminate(nil) }
                         .buttonStyle(.borderedProminent)
                 }
             }
@@ -180,7 +180,7 @@ struct GeneralSettings: View {
 
     private var connectionSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Clawdbot runs")
+            Text("Farm Friend Terminal runs")
                 .font(.title3.weight(.semibold))
                 .frame(maxWidth: .infinity, alignment: .leading)
 

@@ -352,7 +352,7 @@ describe("gateway bonjour advertiser", () => {
     });
 
     const [bridgeCall] = createService.mock.calls as Array<[ServiceCall]>;
-    expect(bridgeCall?.[0]?.name).toBe("Mac (Clawdbot)");
+    expect(bridgeCall?.[0]?.name).toBe("Mac (Farm Friend Terminal)");
     expect(bridgeCall?.[0]?.domain).toBe("local");
     expect(bridgeCall?.[0]?.hostname).toBe("Mac");
     expect((bridgeCall?.[0]?.txt as Record<string, string>)?.lanHost).toBe(

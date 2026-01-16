@@ -130,6 +130,6 @@ struct GatewayDiscoveryMenu: View {
         } label: {
             Image(systemName: "dot.radiowaves.left.and.right")
         }
-        .help("Discover Clawdbot bridges on your LAN")
+        .help("Discover Farm Friend Terminal bridges on your LAN")
     }
 }

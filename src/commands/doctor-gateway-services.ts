@@ -73,7 +73,7 @@ export async function maybeMigrateLegacyGatewayService(
   );
 
   const migrate = await prompter.confirmSkipInNonInteractive({
-    message: "Migrate legacy Clawdis services to Clawdbot now?",
+    message: "Migrate legacy Clawdis services to Farm Friend Terminal now?",
     initialValue: true,
   });
   if (!migrate) return;
@@ -103,12 +103,15 @@ export async function maybeMigrateLegacyGatewayService(
     profile: process.env.CLAWDBOT_PROFILE,
   });
   if (loaded) {
-    note(`Clawdbot ${service.label} already ${service.loadedText}.`, "Gateway");
+    note(
+      `Farm Friend Terminal ${service.label} already ${service.loadedText}.`,
+      "Gateway",
+    );
     return;
   }
 
   const install = await prompter.confirmSkipInNonInteractive({
-    message: "Install Clawdbot gateway service now?",
+    message: "Install Farm Friend Terminal gateway service now?",
     initialValue: true,
   });
   if (!install) return;

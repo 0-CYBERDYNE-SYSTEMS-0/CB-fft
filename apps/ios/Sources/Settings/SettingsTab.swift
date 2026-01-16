@@ -202,7 +202,7 @@ struct SettingsTab: View {
 
                 Section("Screen") {
                     Toggle("Prevent Sleep", isOn: self.$preventSleep)
-                    Text("Keeps the screen awake while Clawdbot is open.")
+                    Text("Keeps the screen awake while Farm Friend Terminal is open.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }

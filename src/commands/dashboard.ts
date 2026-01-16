@@ -59,7 +59,9 @@ export async function dashboardCommand(
   }
 
   if (opened) {
-    runtime.log("Opened in your browser. Keep that tab to control Clawdbot.");
+    runtime.log(
+      "Opened in your browser. Keep that tab to control Farm Friend Terminal.",
+    );
   } else if (hint) {
     runtime.log(hint);
   }

@@ -188,7 +188,7 @@ const formatUsagePair = (input?: number | null, output?: number | null) => {
   const inputLabel = typeof input === "number" ? formatTokenCount(input) : "?";
   const outputLabel =
     typeof output === "number" ? formatTokenCount(output) : "?";
-  return `🧮 Tokens: ${inputLabel} in / ${outputLabel} out`;
+  return `Tokens: ${inputLabel} in / ${outputLabel} out`;
 };
 
 export function buildStatusMessage(args: StatusArgs): string {
@@ -293,7 +293,7 @@ export function buildStatusMessage(args: StatusArgs): string {
 
   const contextLine = [
     `Context: ${formatTokens(totalTokens, contextTokens ?? null)}`,
-    `🧹 Compactions: ${entry?.compactionCount ?? 0}`,
+    `Compactions: ${entry?.compactionCount ?? 0}`,
   ]
     .filter(Boolean)
     .join(" · ");
@@ -311,8 +311,8 @@ export function buildStatusMessage(args: StatusArgs): string {
   ];
   const optionsLine = optionParts.filter(Boolean).join(" · ");
   const activationParts = [
-    groupActivationValue ? `👥 Activation: ${groupActivationValue}` : null,
-    `🪢 Queue: ${queueMode}${queueDetails}`,
+    groupActivationValue ? `Activation: ${groupActivationValue}` : null,
+    `Queue: ${queueMode}${queueDetails}`,
   ];
   const activationLine = activationParts.filter(Boolean).join(" · ");
 
@@ -343,12 +343,12 @@ export function buildStatusMessage(args: StatusArgs): string {
   const costLabel = showCost && hasUsage ? formatUsd(cost) : undefined;
 
   const modelLabel = model ? `${provider}/${model}` : "unknown";
-  const authLabel = authLabelValue ? ` · 🔑 ${authLabelValue}` : "";
-  const modelLine = `🧠 Model: ${modelLabel}${authLabel}`;
+  const authLabel = authLabelValue ? ` · ${authLabelValue}` : "";
+  const modelLine = `Model: ${modelLabel}${authLabel}`;
   const commit = resolveCommitHash();
-  const versionLine = `🦞 Clawdbot ${VERSION}${commit ? ` (${commit})` : ""}`;
+  const versionLine = `Farm Friend Terminal ${VERSION}${commit ? ` (${commit})` : ""}`;
   const usagePair = formatUsagePair(inputTokens, outputTokens);
-  const costLine = costLabel ? `💵 Cost: ${costLabel}` : null;
+  const costLine = costLabel ? `Cost: ${costLabel}` : null;
   const usageCostLine =
     usagePair && costLine
       ? `${usagePair} · ${costLine}`
@@ -358,10 +358,10 @@ export function buildStatusMessage(args: StatusArgs): string {
     versionLine,
     modelLine,
     usageCostLine,
-    `📚 ${contextLine}`,
+    contextLine,
     args.usageLine,
-    `🧵 ${sessionLine}`,
-    `⚙️ ${optionsLine}`,
+    sessionLine,
+    optionsLine,
     activationLine,
   ]
     .filter(Boolean)
@@ -380,7 +380,7 @@ export function buildHelpMessage(cfg?: ClawdbotConfig): string {
   if (cfg?.commands?.config === true) options.push("/config show");
   if (cfg?.commands?.debug === true) options.push("/debug show");
   return [
-    "ℹ️ Help",
+    "Help",
     "Shortcuts: /new reset | /compact [instructions] | /restart relink (if enabled)",
     `Options: ${options.join(" | ")}`,
     "More: /commands for all slash commands",
@@ -388,7 +388,7 @@ export function buildHelpMessage(cfg?: ClawdbotConfig): string {
 }
 
 export function buildCommandsMessage(cfg?: ClawdbotConfig): string {
-  const lines = ["ℹ️ Slash commands"];
+  const lines = ["Slash commands"];
   const commands = cfg ? listChatCommandsForConfig(cfg) : listChatCommands();
   for (const command of commands) {
     const primary = command.nativeName

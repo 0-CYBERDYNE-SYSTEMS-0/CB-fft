@@ -94,7 +94,7 @@ extension ConfigSettings {
 
     @ViewBuilder
     private var header: some View {
-        Text("Clawdbot CLI config")
+        Text("Farm Friend Terminal CLI config")
             .font(.title3.weight(.semibold))
         Text(self.isNixMode
             ? "This tab is read-only in Nix mode. Edit config via Nix and rebuild."
@@ -260,7 +260,7 @@ extension ConfigSettings {
     }
 
     private var anthropicAuthHelpText: String {
-        "Determined from Clawdbot OAuth token file (~/.clawdbot/credentials/oauth.json) " +
+        "Determined from Farm Friend Terminal OAuth token file (~/.clawdbot/credentials/oauth.json) " +
             "or environment variables (ANTHROPIC_OAUTH_TOKEN / ANTHROPIC_API_KEY)."
     }
 

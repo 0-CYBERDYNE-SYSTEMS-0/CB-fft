@@ -173,7 +173,7 @@ export const CHAT_COMMANDS: ChatCommandDefinition[] = (() => {
     defineChatCommand({
       key: "restart",
       nativeName: "restart",
-      description: "Restart Clawdbot.",
+      description: "Restart Farm Friend Terminal.",
       textAlias: "/restart",
     }),
     defineChatCommand({

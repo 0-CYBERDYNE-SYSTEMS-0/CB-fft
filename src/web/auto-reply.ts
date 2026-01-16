@@ -703,8 +703,8 @@ async function deliverWebReply(params: {
       if (index === 0) {
         const warning =
           err instanceof Error
-            ? `⚠️ Media failed: ${err.message}`
-            : "⚠️ Media failed.";
+            ? `Warning: Media failed: ${err.message}`
+            : "Warning: Media failed.";
         const fallbackTextParts = [
           remainingText.shift() ?? caption ?? "",
           warning,
@@ -1520,7 +1520,7 @@ export async function monitorWebProvider(
 
         // Same-phone mode logging retained
         if (msg.from === msg.to) {
-          logVerbose(`📱 Same-phone mode detected (from === to: ${msg.from})`);
+          logVerbose(`Same-phone mode detected (from === to: ${msg.from})`);
         }
 
         // Skip if this is a message we just sent (echo detection)
@@ -1731,7 +1731,7 @@ export async function monitorWebProvider(
         if (minutesSinceLastMessage && minutesSinceLastMessage > 30) {
           heartbeatLogger.warn(
             logData,
-            "⚠️ web gateway heartbeat - no messages in 30+ minutes",
+            "Web gateway heartbeat - no messages in 30+ minutes",
           );
         } else {
           heartbeatLogger.info(logData, "web gateway heartbeat");

@@ -223,7 +223,7 @@ function pickPrimaryWindow(windows: UsageWindow[]): UsageWindow | undefined {
 function formatWindowShort(window: UsageWindow, now?: number): string {
   const remaining = clampPercent(100 - window.usedPercent);
   const reset = formatResetRemaining(window.resetAt, now);
-  const resetSuffix = reset ? ` ⏱${reset}` : "";
+  const resetSuffix = reset ? `, resets ${reset}` : "";
   return `${remaining.toFixed(0)}% left (${window.label}${resetSuffix})`;
 }
 
@@ -245,7 +245,7 @@ export function formatUsageSummaryLine(
     .filter(Boolean) as string[];
 
   if (parts.length === 0) return null;
-  return `📊 Usage: ${parts.join(" · ")}`;
+  return `Usage: ${parts.join(" · ")}`;
 }
 
 export function formatUsageReportLines(

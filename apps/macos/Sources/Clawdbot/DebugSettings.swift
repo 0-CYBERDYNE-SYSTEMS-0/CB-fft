@@ -344,7 +344,7 @@ struct DebugSettings: View {
         GroupBox("Paths") {
             VStack(alignment: .leading, spacing: 12) {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Clawdbot project root")
+                    Text("Farm Friend Terminal project root")
                         .font(.caption.weight(.semibold))
                     HStack(spacing: 8) {
                         TextField("Path to clawdbot repo", text: self.$gatewayRootInput)

@@ -180,7 +180,8 @@
 
 .statusDot.ok {
   background: var(--ok);
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25), 0 0 10px rgba(43, 217, 127, 0.4);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25),
+    0 0 10px color-mix(in srgb, var(--ok) 55%, transparent);
 }
 
 .btn {
@@ -198,18 +199,18 @@
 }
 
 .btn.primary {
-  border-color: rgba(245, 159, 74, 0.45);
-  background: rgba(245, 159, 74, 0.2);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 .btn.active {
-  border-color: rgba(245, 159, 74, 0.55);
-  background: rgba(245, 159, 74, 0.16);
+  border-color: color-mix(in srgb, var(--accent) 65%, transparent);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .btn.danger {
-  border-color: rgba(255, 107, 107, 0.45);
-  background: rgba(255, 107, 107, 0.18);
+  border-color: color-mix(in srgb, var(--danger) 55%, transparent);
+  background: color-mix(in srgb, var(--danger) 18%, transparent);
 }
 
 .btn--sm {
@@ -217,10 +218,24 @@
   font-size: 12px;
 }
 
+.field-toggle {
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+}
+
+:root[data-field-mode="true"] .btn {
+  padding: 10px 16px;
+}
+
+:root[data-field-mode="true"] .btn--sm {
+  padding: 7px 12px;
+  font-size: 13px;
 }
 
 .field {
@@ -324,11 +339,11 @@
 }
 
 :root[data-theme="light"] .btn.primary {
-  background: rgba(245, 159, 74, 0.15);
+  background: color-mix(in srgb, var(--accent) 16%, white);
 }
 
 :root[data-theme="light"] .btn.active {
-  background: rgba(245, 159, 74, 0.12);
+  background: color-mix(in srgb, var(--accent) 14%, white);
 }
 
 .muted {

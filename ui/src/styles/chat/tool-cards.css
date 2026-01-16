@@ -52,11 +52,14 @@
   justify-content: center;
   width: 18px;
   height: 18px;
-  font-size: 14px;
   line-height: 1;
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   vertical-align: middle;
   flex-shrink: 0;
+}
+
+.chat-tool-card__icon svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* "View >" action link */
@@ -164,4 +167,3 @@
     transform: scale(1);
   }
 }
-

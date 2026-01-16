@@ -13,9 +13,9 @@ export type ResolveBonjourCliPathOptions = {
 
 export function formatBonjourInstanceName(displayName: string) {
   const trimmed = displayName.trim();
-  if (!trimmed) return "Clawdbot";
-  if (/clawdbot/i.test(trimmed)) return trimmed;
-  return `${trimmed} (Clawdbot)`;
+  if (!trimmed) return "Farm Friend Terminal";
+  if (/clawdbot|farm friend terminal/i.test(trimmed)) return trimmed;
+  return `${trimmed} (Farm Friend Terminal)`;
 }
 
 export function resolveBonjourCliPath(

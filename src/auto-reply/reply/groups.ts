@@ -86,14 +86,14 @@ export function buildGroupIntro(params: {
     : undefined;
   const silenceLine =
     activation === "always"
-      ? `If no response is needed, reply with exactly "${params.silentToken}" (and nothing else) so Clawdbot stays silent. Do not add any other words, punctuation, tags, markdown/code blocks, or explanations.`
+      ? `If no response is needed, reply with exactly "${params.silentToken}" (and nothing else) so Farm Friend Terminal stays silent. Do not add any other words, punctuation, tags, markdown/code blocks, or explanations.`
       : undefined;
   const cautionLine =
     activation === "always"
       ? "Be extremely selective: reply only when directly addressed or clearly helpful. Otherwise stay silent."
       : undefined;
   const lurkLine =
-    "Be a good group participant: mostly lurk and follow the conversation; reply only when directly addressed or you can add clear value. Emoji reactions are welcome when available.";
+    "Be a good group participant: mostly lurk and follow the conversation; reply only when directly addressed or you can add clear value. Reactions are optional when available.";
   return [
     subjectLine,
     membersLine,

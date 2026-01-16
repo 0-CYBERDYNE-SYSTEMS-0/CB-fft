@@ -86,6 +86,10 @@
     flex-wrap: nowrap;
   }
 
+  .field-toggle {
+    display: none;
+  }
+
   .topbar-status .pill {
     padding: 4px 8px;
     font-size: 11px;

@@ -97,7 +97,7 @@ export function renderChat(props: ChatProps) {
               aria-label="Exit focus mode"
               title="Exit focus mode"
             >
-              ✕
+              x
             </button>
           `
         : nothing}
@@ -187,7 +187,7 @@ export function renderChat(props: ChatProps) {
                         aria-label="Remove queued message"
                         @click=${() => props.onQueueRemove(item.id)}
                       >
-                        ✕
+                        x
                       </button>
                     </div>
                   `,

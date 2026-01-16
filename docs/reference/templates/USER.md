@@ -3,14 +3,16 @@ summary: "User profile record"
 read_when:
   - Bootstrapping a workspace manually
 ---
-# USER.md - About Your Human
+# USER.md - User Profile
 
 *Learn about the person you're helping. Update this as you go.*
 
 - **Name:** 
-- **What to call them:** 
+- **Preferred address:** 
 - **Pronouns:** *(optional)*
 - **Timezone:** 
+- **Farm type:** *(optional)*
+- **Preferred units:** *(optional)*
 - **Notes:** 
 
 ## Context

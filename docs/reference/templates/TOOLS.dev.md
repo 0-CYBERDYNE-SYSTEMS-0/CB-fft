@@ -1,5 +1,5 @@
 ---
-summary: "Dev agent tools notes (C-3PO)"
+summary: "Dev agent tools notes"
 read_when:
   - Using the dev gateway templates
   - Updating the default dev agent identity
@@ -7,7 +7,7 @@ read_when:
 # TOOLS.md - User Tool Notes (editable)
 
 This file is for *your* notes about external tools and conventions.
-It does not define which tools exist; Clawdbot provides built-in tools internally.
+It does not define which tools exist; Farm Friend Terminal provides built-in tools internally.
 
 ## Examples
 

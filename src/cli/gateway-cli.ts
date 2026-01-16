@@ -88,7 +88,7 @@ type GatewayRunParams = {
 const gatewayLog = createSubsystemLogger("gateway");
 const DEV_IDENTITY_NAME = "C3-PO";
 const DEV_IDENTITY_THEME = "protocol droid";
-const DEV_IDENTITY_EMOJI = "🤖";
+const DEV_IDENTITY_EMOJI = "";
 const DEV_AGENT_WORKSPACE_SUFFIX = "dev";
 const DEV_TEMPLATE_DIR = path.resolve(
   path.dirname(new URL(import.meta.url).pathname),
@@ -164,11 +164,11 @@ async function ensureDevWorkspace(dir: string) {
   const [agents, soul, tools, identity, user] = await Promise.all([
     loadDevTemplate(
       "AGENTS.dev.md",
-      `# AGENTS.md - Clawdbot Dev Workspace\n\nDefault dev workspace for clawdbot gateway --dev.\n`,
+      `# AGENTS.md - Farm Friend Terminal Dev Workspace\n\nDefault dev workspace for clawdbot gateway --dev.\n`,
     ),
     loadDevTemplate(
       "SOUL.dev.md",
-      `# SOUL.md - Dev Persona\n\nProtocol droid for debugging and operations.\n`,
+      `# SOUL.md - Dev Persona\n\nFarm-savvy protocol droid for debugging and operations.\n`,
     ),
     loadDevTemplate(
       "TOOLS.dev.md",
@@ -176,7 +176,7 @@ async function ensureDevWorkspace(dir: string) {
     ),
     loadDevTemplate(
       "IDENTITY.dev.md",
-      `# IDENTITY.md - Agent Identity\n\n- Name: ${DEV_IDENTITY_NAME}\n- Creature: protocol droid\n- Vibe: ${DEV_IDENTITY_THEME}\n- Emoji: ${DEV_IDENTITY_EMOJI}\n`,
+      `# IDENTITY.md - Agent Identity\n\n- Name: ${DEV_IDENTITY_NAME}\n- Role: protocol droid\n- Voice: ${DEV_IDENTITY_THEME}\n- Mark (optional): ${DEV_IDENTITY_EMOJI}\n`,
     ),
     loadDevTemplate(
       "USER.dev.md",

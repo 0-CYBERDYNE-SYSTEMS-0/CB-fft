@@ -580,8 +580,8 @@ export async function runConfigureWizard(
     printWizardHeader(runtime);
     intro(
       opts.command === "update"
-        ? "Clawdbot update wizard"
-        : "Clawdbot configure",
+        ? "Farm Friend Terminal update wizard"
+        : "Farm Friend Terminal configure",
     );
     const prompter = createClackPrompter();
 

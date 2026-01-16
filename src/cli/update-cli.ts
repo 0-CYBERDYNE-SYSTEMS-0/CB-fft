@@ -176,7 +176,7 @@ export async function updateCommand(opts: UpdateCommandOptions): Promise<void> {
   const showProgress = !opts.json && process.stdout.isTTY;
 
   if (!opts.json) {
-    defaultRuntime.log(theme.heading("Updating Clawdbot..."));
+    defaultRuntime.log(theme.heading("Updating Farm Friend Terminal..."));
     defaultRuntime.log("");
   }
 
@@ -216,7 +216,7 @@ export async function updateCommand(opts: UpdateCommandOptions): Promise<void> {
     if (result.reason === "not-git-install") {
       defaultRuntime.log(
         theme.warn(
-          "Skipped: this Clawdbot install isn't a git checkout. Update via your package manager, then run `clawdbot doctor` and `clawdbot daemon restart`.",
+          "Skipped: this Farm Friend Terminal install isn't a git checkout. Update via your package manager, then run `clawdbot doctor` and `clawdbot daemon restart`.",
         ),
       );
       defaultRuntime.log(
@@ -274,7 +274,7 @@ export async function updateCommand(opts: UpdateCommandOptions): Promise<void> {
 export function registerUpdateCli(program: Command) {
   program
     .command("update")
-    .description("Update Clawdbot to the latest version")
+    .description("Update Farm Friend Terminal to the latest version")
     .option("--json", "Output result as JSON", false)
     .option(
       "--restart",

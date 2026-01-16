@@ -455,7 +455,9 @@ public final class GatewayDiscoveryModel {
 
     private nonisolated static func prettifyInstanceName(_ decodedName: String) -> String {
         let normalized = decodedName.split(whereSeparator: \.isWhitespace).joined(separator: " ")
-        let stripped = normalized.replacingOccurrences(of: " (Clawdbot)", with: "")
+        let stripped = normalized
+            .replacingOccurrences(of: " (Clawdbot)", with: "")
+            .replacingOccurrences(of: " (Farm Friend Terminal)", with: "")
             .replacingOccurrences(of: #"\s+\(\d+\)$"#, with: "", options: .regularExpression)
         return stripped.trimmingCharacters(in: .whitespacesAndNewlines)
     }

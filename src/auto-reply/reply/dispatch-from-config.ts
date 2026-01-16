@@ -74,7 +74,7 @@ export async function dispatchReplyFromConfig(params: {
 
   const fastAbort = await tryFastAbortFromMessage({ ctx, cfg });
   if (fastAbort.handled) {
-    const payload = { text: "⚙️ Agent was aborted." } satisfies ReplyPayload;
+    const payload = { text: "System: Agent was aborted." } satisfies ReplyPayload;
     let queuedFinal = false;
     let routedFinalCount = 0;
     if (shouldRouteToOriginating && originatingChannel && originatingTo) {

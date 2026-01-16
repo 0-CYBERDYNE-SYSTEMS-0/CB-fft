@@ -7,6 +7,11 @@ private enum ChatUIConstants {
     static let bubbleCorner: CGFloat = 18
 }
 
+private func withMarker(_ marker: String, text: String) -> String {
+    let trimmed = marker.trimmingCharacters(in: .whitespacesAndNewlines)
+    return trimmed.isEmpty ? text : "\(trimmed) \(text)"
+}
+
 private struct ChatBubbleShape: InsettableShape {
     enum Tail {
         case left
@@ -223,7 +228,7 @@ private struct ChatMessageBody: View {
                     let toolResult = self.inlineToolResults[idx]
                     let display = ToolDisplayRegistry.resolve(name: toolResult.name ?? "tool", args: nil)
                     ToolResultCard(
-                        title: "\(display.emoji) \(display.title)",
+                        title: withMarker(display.emoji, text: display.title),
                         text: toolResult.text ?? "",
                         isUser: self.isUser)
                 }
@@ -286,10 +291,10 @@ private struct ChatMessageBody: View {
     private var toolResultTitle: String {
         if let name = self.message.toolName, !name.isEmpty {
             let display = ToolDisplayRegistry.resolve(name: name, args: nil)
-            return "\(display.emoji) \(display.title)"
+            return withMarker(display.emoji, text: display.title)
         }
         let display = ToolDisplayRegistry.resolve(name: "tool", args: nil)
-        return "\(display.emoji) \(display.title)"
+        return withMarker(display.emoji, text: display.title)
     }
 
     private var bubbleFillColor: Color {
@@ -404,7 +409,7 @@ private struct ToolCallCard: View {
     }
 
     private var toolName: String {
-        "\(self.display.emoji) \(self.display.title)"
+        withMarker(self.display.emoji, text: self.display.title)
     }
 
     private var summary: String? {
@@ -536,7 +541,7 @@ struct ChatPendingToolsBubble: View {
                 let display = ToolDisplayRegistry.resolve(name: call.name, args: call.args)
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        Text("\(display.emoji) \(display.label)")
+                        Text(withMarker(display.emoji, text: display.label))
                             .font(.footnote.monospaced())
                             .lineLimit(1)
                         Spacer(minLength: 0)

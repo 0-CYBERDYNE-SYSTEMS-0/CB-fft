@@ -193,8 +193,11 @@ private struct SkillRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            Text(self.skill.emoji ?? "✨")
-                .font(.title2)
+            Text(self.skillMarker)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .frame(width: 30, height: 30)
+                .background(Circle().fill(Color.primary.opacity(0.08)))
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(self.skill.name)
@@ -227,6 +230,16 @@ private struct SkillRow: View {
             self.trailingActions
         }
         .padding(.vertical, 6)
+    }
+
+    private var skillMarker: String {
+        let trimmed = self.skill.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return "SK" }
+        let parts = trimmed.split(whereSeparator: { $0 == " " || $0 == "-" || $0 == "_" })
+        let initials = parts.prefix(2).compactMap(\.first)
+        let marker = String(initials)
+        if !marker.isEmpty { return marker.uppercased() }
+        return String(trimmed.prefix(2)).uppercased()
     }
 
     private var sourceLabel: String {
@@ -583,7 +596,7 @@ extension SkillsSettings {
             baseDir: "/tmp/skills",
             skillKey: "test",
             primaryEnv: "API_KEY",
-            emoji: "🧪",
+            emoji: "",
             homepage: "https://example.com",
             always: false,
             disabled: false,

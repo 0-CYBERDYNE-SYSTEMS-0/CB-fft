@@ -224,7 +224,7 @@ function renderReactions(payload: unknown, opts: FormatOpts): string[] | null {
           .filter(Boolean)
       : [];
     return {
-      Emoji: emoji,
+      Reaction: emoji,
       Count: count,
       Users: shortenText(userList.join(", "), 72),
     };
@@ -236,7 +236,7 @@ function renderReactions(payload: unknown, opts: FormatOpts): string[] | null {
     renderTable({
       width: opts.width,
       columns: [
-        { key: "Emoji", header: "Emoji", minWidth: 8 },
+        { key: "Reaction", header: "Reaction", minWidth: 9 },
         { key: "Count", header: "Count", align: "right", minWidth: 6 },
         { key: "Users", header: "Users", flex: true, minWidth: 20 },
       ],
@@ -280,7 +280,7 @@ export function formatMessageCliText(result: MessageActionRunResult): string[] {
 
     const label = resolveProviderLabel(result.provider);
     const msgId = extractMessageId(result.payload);
-    return [ok(`✅ Sent via ${label}.${msgId ? ` Message ID: ${msgId}` : ""}`)];
+    return [ok(`Sent via ${label}.${msgId ? ` Message ID: ${msgId}` : ""}`)];
   }
 
   if (result.kind === "poll") {
@@ -304,7 +304,7 @@ export function formatMessageCliText(result: MessageActionRunResult): string[] {
     const label = resolveProviderLabel(result.provider);
     const msgId = extractMessageId(result.payload);
     return [
-      ok(`✅ Poll sent via ${label}.${msgId ? ` Message ID: ${msgId}` : ""}`),
+      ok(`Poll sent via ${label}.${msgId ? ` Message ID: ${msgId}` : ""}`),
     ];
   }
 
@@ -316,11 +316,11 @@ export function formatMessageCliText(result: MessageActionRunResult): string[] {
     const added = (payload as { added?: unknown }).added;
     const removed = (payload as { removed?: unknown }).removed;
     if (typeof added === "string" && added.trim()) {
-      lines.push(ok(`✅ Reaction added: ${added.trim()}`));
+      lines.push(ok(`Reaction added: ${added.trim()}`));
       return lines;
     }
     if (typeof removed === "string" && removed.trim()) {
-      lines.push(ok(`✅ Reaction removed: ${removed.trim()}`));
+      lines.push(ok(`Reaction removed: ${removed.trim()}`));
       return lines;
     }
     if (Array.isArray(removed)) {
@@ -328,10 +328,10 @@ export function formatMessageCliText(result: MessageActionRunResult): string[] {
         .map((x) => String(x).trim())
         .filter(Boolean)
         .join(", ");
-      lines.push(ok(`✅ Reactions removed${list ? `: ${list}` : ""}`));
+      lines.push(ok(`Reactions removed${list ? `: ${list}` : ""}`));
       return lines;
     }
-    lines.push(ok("✅ Reaction updated."));
+    lines.push(ok("Reaction updated."));
     return lines;
   }
 
@@ -372,7 +372,7 @@ export function formatMessageCliText(result: MessageActionRunResult): string[] {
 
   // Generic success + compact details table.
   lines.push(
-    ok(`✅ ${result.action} via ${resolveProviderLabel(result.provider)}.`),
+    ok(`${result.action} via ${resolveProviderLabel(result.provider)}.`),
   );
   const summary = renderObjectSummary(payload, opts);
   if (summary.length) {

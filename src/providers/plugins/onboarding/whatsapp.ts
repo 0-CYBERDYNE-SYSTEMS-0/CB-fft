@@ -92,7 +92,7 @@ async function promptWhatsAppAllowFrom(
 
   if (options?.forceAllowlist) {
     await prompter.note(
-      "We need the sender/owner number so Clawdbot can allowlist you.",
+      "We need the sender/owner number so Farm Friend Terminal can allowlist you.",
       "WhatsApp number",
     );
     const entry = await prompter.text({
@@ -121,14 +121,14 @@ async function promptWhatsAppAllowFrom(
     next = setWhatsAppDmPolicy(next, "allowlist");
     next = setWhatsAppAllowFrom(next, unique);
     if (existingResponsePrefix === undefined) {
-      next = setMessagesResponsePrefix(next, "[clawdbot]");
+      next = setMessagesResponsePrefix(next, "[farm-friend]");
     }
     await prompter.note(
       [
         "Allowlist mode enabled.",
         `- allowFrom includes ${normalized}`,
         existingResponsePrefix === undefined
-          ? "- responsePrefix set to [clawdbot]"
+          ? "- responsePrefix set to [farm-friend]"
           : "- responsePrefix left unchanged",
       ].join("\n"),
       "WhatsApp allowlist",
@@ -154,13 +154,13 @@ async function promptWhatsAppAllowFrom(
     message: "WhatsApp phone setup",
     options: [
       { value: "personal", label: "This is my personal phone number" },
-      { value: "separate", label: "Separate phone just for Clawdbot" },
+      { value: "separate", label: "Separate phone just for Farm Friend Terminal" },
     ],
   })) as "personal" | "separate";
 
   if (phoneMode === "personal") {
     await prompter.note(
-      "We need the sender/owner number so Clawdbot can allowlist you.",
+      "We need the sender/owner number so Farm Friend Terminal can allowlist you.",
       "WhatsApp number",
     );
     const entry = await prompter.text({
@@ -189,7 +189,7 @@ async function promptWhatsAppAllowFrom(
     next = setWhatsAppDmPolicy(next, "allowlist");
     next = setWhatsAppAllowFrom(next, unique);
     if (existingResponsePrefix === undefined) {
-      next = setMessagesResponsePrefix(next, "[clawdbot]");
+      next = setMessagesResponsePrefix(next, "[farm-friend]");
     }
     await prompter.note(
       [
@@ -197,7 +197,7 @@ async function promptWhatsAppAllowFrom(
         "- dmPolicy set to allowlist (pairing skipped)",
         `- allowFrom includes ${normalized}`,
         existingResponsePrefix === undefined
-          ? "- responsePrefix set to [clawdbot]"
+          ? "- responsePrefix set to [farm-friend]"
           : "- responsePrefix left unchanged",
       ].join("\n"),
       "WhatsApp personal phone",

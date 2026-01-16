@@ -125,7 +125,7 @@ struct MenuContent: View {
             Button("Settings…") { self.open(tab: .general) }
                 .keyboardShortcut(",", modifiers: [.command])
             self.debugMenu
-            Button("About Clawdbot") { self.open(tab: .about) }
+            Button("About Farm Friend Terminal") { self.open(tab: .about) }
             if let updater, updater.isAvailable, self.updateStatus.isUpdateReady {
                 Button("Update ready, restart now?") { updater.checkForUpdates(nil) }
             }
@@ -161,11 +161,11 @@ struct MenuContent: View {
     private var connectionLabel: String {
         switch self.state.connectionMode {
         case .unconfigured:
-            "Clawdbot Not Configured"
+            "Farm Friend Terminal Not Configured"
         case .remote:
-            "Remote Clawdbot Active"
+            "Remote Farm Friend Terminal Active"
         case .local:
-            "Clawdbot Active"
+            "Farm Friend Terminal Active"
         }
     }
 

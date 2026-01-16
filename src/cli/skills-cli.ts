@@ -37,9 +37,8 @@ function appendClawdHubHint(output: string, json?: boolean): string {
  * Format a single skill for display in the list
  */
 function formatSkillLine(skill: SkillStatusEntry, verbose = false): string {
-  const emoji = skill.emoji ?? "📦";
   const status = skill.eligible
-    ? chalk.green("✓")
+    ? chalk.green("ok")
     : skill.disabled
       ? chalk.yellow("disabled")
       : skill.blockedByAllowlist
@@ -75,10 +74,10 @@ function formatSkillLine(skill: SkillStatusEntry, verbose = false): string {
     }
     const missingStr =
       missing.length > 0 ? chalk.red(` [${missing.join("; ")}]`) : "";
-    return `${emoji} ${name} ${status}${missingStr}\n   ${desc}`;
+    return `${name} ${status}${missingStr}\n   ${desc}`;
   }
 
-  return `${emoji} ${name} ${status} - ${desc}`;
+  return `${name} ${status} - ${desc}`;
 }
 
 /**
@@ -174,16 +173,15 @@ export function formatSkillInfo(
   }
 
   const lines: string[] = [];
-  const emoji = skill.emoji ?? "📦";
   const status = skill.eligible
-    ? chalk.green("✓ Ready")
+    ? chalk.green("ready")
     : skill.disabled
-      ? chalk.yellow("⏸ Disabled")
+      ? chalk.yellow("disabled")
       : skill.blockedByAllowlist
-        ? chalk.yellow("🚫 Blocked by allowlist")
-        : chalk.red("✗ Missing requirements");
+        ? chalk.yellow("blocked by allowlist")
+        : chalk.red("missing requirements");
 
-  lines.push(`${emoji} ${chalk.bold.cyan(skill.name)} ${status}`);
+  lines.push(`${chalk.bold.cyan(skill.name)} ${status}`);
   lines.push("");
   lines.push(chalk.white(skill.description));
   lines.push("");
@@ -213,7 +211,7 @@ export function formatSkillInfo(
     if (skill.requirements.bins.length > 0) {
       const binsStatus = skill.requirements.bins.map((bin) => {
         const missing = skill.missing.bins.includes(bin);
-        return missing ? chalk.red(`✗ ${bin}`) : chalk.green(`✓ ${bin}`);
+        return missing ? chalk.red(`missing ${bin}`) : chalk.green(`ok ${bin}`);
       });
       lines.push(`  Binaries: ${binsStatus.join(", ")}`);
     }
@@ -221,28 +219,28 @@ export function formatSkillInfo(
       const anyBinsMissing = skill.missing.anyBins.length > 0;
       const anyBinsStatus = skill.requirements.anyBins.map((bin) => {
         const missing = anyBinsMissing;
-        return missing ? chalk.red(`✗ ${bin}`) : chalk.green(`✓ ${bin}`);
+        return missing ? chalk.red(`missing ${bin}`) : chalk.green(`ok ${bin}`);
       });
       lines.push(`  Any binaries: ${anyBinsStatus.join(", ")}`);
     }
     if (skill.requirements.env.length > 0) {
       const envStatus = skill.requirements.env.map((env) => {
         const missing = skill.missing.env.includes(env);
-        return missing ? chalk.red(`✗ ${env}`) : chalk.green(`✓ ${env}`);
+        return missing ? chalk.red(`missing ${env}`) : chalk.green(`ok ${env}`);
       });
       lines.push(`  Environment: ${envStatus.join(", ")}`);
     }
     if (skill.requirements.config.length > 0) {
       const configStatus = skill.requirements.config.map((cfg) => {
         const missing = skill.missing.config.includes(cfg);
-        return missing ? chalk.red(`✗ ${cfg}`) : chalk.green(`✓ ${cfg}`);
+        return missing ? chalk.red(`missing ${cfg}`) : chalk.green(`ok ${cfg}`);
       });
       lines.push(`  Config: ${configStatus.join(", ")}`);
     }
     if (skill.requirements.os.length > 0) {
       const osStatus = skill.requirements.os.map((osName) => {
         const missing = skill.missing.os.includes(osName);
-        return missing ? chalk.red(`✗ ${osName}`) : chalk.green(`✓ ${osName}`);
+        return missing ? chalk.red(`missing ${osName}`) : chalk.green(`ok ${osName}`);
       });
       lines.push(`  OS: ${osStatus.join(", ")}`);
     }
@@ -253,7 +251,7 @@ export function formatSkillInfo(
     lines.push("");
     lines.push(chalk.bold("Install options:"));
     for (const inst of skill.install) {
-      lines.push(`  ${chalk.yellow("→")} ${inst.label}`);
+      lines.push(`  ${chalk.yellow("-")} ${inst.label}`);
     }
   }
 
@@ -304,17 +302,16 @@ export function formatSkillsCheck(
   lines.push(chalk.bold.cyan("Skills Status Check"));
   lines.push("");
   lines.push(`Total: ${report.skills.length}`);
-  lines.push(`${chalk.green("✓")} Eligible: ${eligible.length}`);
-  lines.push(`${chalk.yellow("⏸")} Disabled: ${disabled.length}`);
-  lines.push(`${chalk.yellow("🚫")} Blocked by allowlist: ${blocked.length}`);
-  lines.push(`${chalk.red("✗")} Missing requirements: ${missingReqs.length}`);
+  lines.push(`${chalk.green("ok")} Eligible: ${eligible.length}`);
+  lines.push(`${chalk.yellow("disabled")} Disabled: ${disabled.length}`);
+  lines.push(`${chalk.yellow("blocked")} Blocked by allowlist: ${blocked.length}`);
+  lines.push(`${chalk.red("missing")} Missing requirements: ${missingReqs.length}`);
 
   if (eligible.length > 0) {
     lines.push("");
     lines.push(chalk.bold.green("Ready to use:"));
     for (const skill of eligible) {
-      const emoji = skill.emoji ?? "📦";
-      lines.push(`  ${emoji} ${skill.name}`);
+      lines.push(`  ${skill.name}`);
     }
   }
 
@@ -322,7 +319,6 @@ export function formatSkillsCheck(
     lines.push("");
     lines.push(chalk.bold.red("Missing requirements:"));
     for (const skill of missingReqs) {
-      const emoji = skill.emoji ?? "📦";
       const missing: string[] = [];
       if (skill.missing.bins.length > 0) {
         missing.push(`bins: ${skill.missing.bins.join(", ")}`);
@@ -340,7 +336,7 @@ export function formatSkillsCheck(
         missing.push(`os: ${skill.missing.os.join(", ")}`);
       }
       lines.push(
-        `  ${emoji} ${skill.name} ${chalk.gray(`(${missing.join("; ")})`)}`,
+        `  ${skill.name} ${chalk.gray(`(${missing.join("; ")})`)}`,
       );
     }
   }

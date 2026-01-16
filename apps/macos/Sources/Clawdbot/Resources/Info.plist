@@ -11,7 +11,7 @@
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>Clawdbot</string>
+    <string>Farm Friend Terminal</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
@@ -42,23 +42,23 @@
     <string></string>
 
     <key>NSUserNotificationUsageDescription</key>
-    <string>Clawdbot needs notification permission to show alerts for agent actions.</string>
+    <string>Farm Friend Terminal needs notification permission to show alerts for agent actions.</string>
     <key>NSScreenCaptureDescription</key>
-    <string>Clawdbot captures the screen when the agent needs screenshots for context.</string>
+    <string>Farm Friend Terminal captures the screen when the agent needs screenshots for context.</string>
     <key>NSCameraUsageDescription</key>
-    <string>Clawdbot can capture photos or short video clips when requested by the agent.</string>
+    <string>Farm Friend Terminal can capture photos or short video clips when requested by the agent.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Clawdbot can share your location when requested by the agent.</string>
+	<string>Farm Friend Terminal can share your location when requested by the agent.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Clawdbot can share your location when requested by the agent.</string>
+	<string>Farm Friend Terminal can share your location when requested by the agent.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Clawdbot can share your location when requested by the agent.</string>
+	<string>Farm Friend Terminal can share your location when requested by the agent.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Clawdbot needs the mic for Voice Wake tests and agent audio capture.</string>
+	<string>Farm Friend Terminal needs the mic for Voice Wake tests and agent audio capture.</string>
     <key>NSSpeechRecognitionUsageDescription</key>
-    <string>Clawdbot uses speech recognition to detect your Voice Wake trigger phrase.</string>
+    <string>Farm Friend Terminal uses speech recognition to detect your Voice Wake trigger phrase.</string>
     <key>NSAppleEventsUsageDescription</key>
-    <string>Clawdbot needs Automation (AppleScript) permission to drive Terminal and other apps for agent actions.</string>
+    <string>Farm Friend Terminal needs Automation (AppleScript) permission to drive Terminal and other apps for agent actions.</string>
 
     <key>NSAppTransportSecurity</key>
     <dict>

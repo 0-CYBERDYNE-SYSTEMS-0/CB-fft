@@ -436,7 +436,7 @@ fun SettingsSheet(viewModel: MainViewModel) {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.fillMaxWidth()) {
           ListItem(
             headlineContent = { Text("Foreground Only") },
-            supportingContent = { Text("Listens only while Clawdbot is open.") },
+            supportingContent = { Text("Listens only while Farm Friend Terminal is open.") },
             trailingContent = {
               RadioButton(
                 selected = voiceWakeMode == VoiceWakeMode.Foreground,
@@ -580,7 +580,7 @@ fun SettingsSheet(viewModel: MainViewModel) {
         )
         ListItem(
           headlineContent = { Text("While Using") },
-          supportingContent = { Text("Only while Clawdbot is open.") },
+          supportingContent = { Text("Only while Farm Friend Terminal is open.") },
           trailingContent = {
             RadioButton(
               selected = locationMode == LocationMode.WhileUsing,
@@ -627,7 +627,7 @@ fun SettingsSheet(viewModel: MainViewModel) {
     item {
       ListItem(
         headlineContent = { Text("Prevent Sleep") },
-        supportingContent = { Text("Keeps the screen awake while Clawdbot is open.") },
+        supportingContent = { Text("Keeps the screen awake while Farm Friend Terminal is open.") },
         trailingContent = { Switch(checked = preventSleep, onCheckedChange = viewModel::setPreventSleep) },
       )
     }

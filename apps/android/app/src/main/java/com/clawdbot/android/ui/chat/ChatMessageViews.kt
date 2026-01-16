@@ -39,6 +39,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import androidx.compose.ui.platform.LocalContext
 
+private fun withMarker(marker: String, text: String): String {
+  val trimmed = marker.trim()
+  return if (trimmed.isEmpty()) text else "$trimmed $text"
+}
+
 @Composable
 fun ChatMessageBubble(message: ChatMessage) {
   val isUser = message.role.lowercase() == "user"
@@ -121,7 +126,7 @@ fun ChatPendingToolsBubble(toolCalls: List<ChatPendingToolCall>) {
         for (display in displays.take(6)) {
           Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
             Text(
-              "${display.emoji} ${display.label}",
+              withMarker(display.emoji, display.label),
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
               fontFamily = FontFamily.Monospace,

@@ -551,7 +551,7 @@ describe("directive behavior", () => {
       );
 
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toMatch(/^⚙️ Verbose logging enabled\./);
+      expect(text).toMatch(/^System: Verbose logging enabled\./);
       expect(runEmbeddedPiAgent).not.toHaveBeenCalled();
     });
   });
@@ -760,7 +760,7 @@ describe("directive behavior", () => {
       expect(text).toContain("Elevated mode disabled.");
       const optionsLine = text
         ?.split("\n")
-        .find((line) => line.trim().startsWith("⚙️"));
+        .find((line) => line.trim().startsWith("System:"));
       expect(optionsLine).toBeTruthy();
       expect(optionsLine).not.toContain("elevated");
 
@@ -944,7 +944,7 @@ describe("directive behavior", () => {
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
       const optionsLine = text
         ?.split("\n")
-        .find((line) => line.trim().startsWith("⚙️"));
+        .find((line) => line.trim().startsWith("System:"));
       expect(optionsLine).toBeTruthy();
       expect(optionsLine).toContain("elevated");
 
@@ -1240,7 +1240,7 @@ describe("directive behavior", () => {
       expect(text).toContain("Session: agent:main:main");
       const optionsLine = text
         ?.split("\n")
-        .find((line) => line.trim().startsWith("⚙️"));
+        .find((line) => line.trim().startsWith("System:"));
       expect(optionsLine).toBeTruthy();
       expect(optionsLine).not.toContain("elevated");
 
@@ -1316,7 +1316,7 @@ describe("directive behavior", () => {
       );
 
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toMatch(/^⚙️ Queue mode set to interrupt\./);
+      expect(text).toMatch(/^System: Queue mode set to interrupt\./);
       const store = loadSessionStore(storePath);
       const entry = Object.values(store)[0];
       expect(entry?.queueMode).toBe("interrupt");
@@ -1349,7 +1349,7 @@ describe("directive behavior", () => {
       );
 
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toMatch(/^⚙️ Queue mode set to collect\./);
+      expect(text).toMatch(/^System: Queue mode set to collect\./);
       expect(text).toMatch(/Queue debounce set to 2000ms/);
       expect(text).toMatch(/Queue cap set to 5/);
       expect(text).toMatch(/Queue drop set to old/);
@@ -1399,7 +1399,7 @@ describe("directive behavior", () => {
       );
 
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toMatch(/^⚙️ Queue mode reset to default\./);
+      expect(text).toMatch(/^System: Queue mode reset to default\./);
       const store = loadSessionStore(storePath);
       const entry = Object.values(store)[0];
       expect(entry?.queueMode).toBeUndefined();

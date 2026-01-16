@@ -208,10 +208,10 @@ async function removeContainer(
 ): Promise<{ success: boolean }> {
   try {
     await removeFn(containerName);
-    runtime.log(`✓ Removed ${containerName}`);
+    runtime.log(`Removed ${containerName}`);
     return { success: true };
   } catch (err) {
-    runtime.error(`✗ Failed to remove ${containerName}: ${String(err)}`);
+    runtime.error(`Failed to remove ${containerName}: ${String(err)}`);
     return { success: false };
   }
 }

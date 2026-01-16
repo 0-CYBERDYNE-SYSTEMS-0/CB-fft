@@ -23,7 +23,9 @@ final class DeepLinkHandler {
             return
         }
         guard !AppStateStore.shared.isPaused else {
-            self.presentAlert(title: "Clawdbot is paused", message: "Unpause Clawdbot to run agent actions.")
+            self.presentAlert(
+                title: "Farm Friend Terminal is paused",
+                message: "Unpause Farm Friend Terminal to run agent actions.")
             return
         }
 
@@ -51,7 +53,7 @@ final class DeepLinkHandler {
             let trimmed = messagePreview.count > 240 ? "\(messagePreview.prefix(240))…" : messagePreview
             let body =
                 "Run the agent with this message?\n\n\(trimmed)\n\nURL:\n\(originalURL.absoluteString)"
-            guard self.confirm(title: "Run Clawdbot agent?", message: body) else { return }
+            guard self.confirm(title: "Run Farm Friend Terminal agent?", message: body) else { return }
         }
 
         if AppStateStore.shared.connectionMode == .local {

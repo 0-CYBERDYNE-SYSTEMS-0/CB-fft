@@ -179,7 +179,7 @@ export async function buildStatusReply(params: {
       ) {
         const entry = usageSummary.providers[0];
         if (entry?.error) {
-          usageLine = `📊 Usage: ${entry.displayName} (${entry.error})`;
+          usageLine = `Usage: ${entry.displayName} (${entry.error})`;
         }
       }
     }
@@ -469,7 +469,7 @@ export async function handleCommands(params: {
     if (!isGroup) {
       return {
         shouldContinue: false,
-        reply: { text: "⚙️ Group activation only applies to group chats." },
+        reply: { text: "System: Group activation only applies to group chats." },
       };
     }
     if (!command.isAuthorizedSender) {
@@ -481,7 +481,7 @@ export async function handleCommands(params: {
     if (!activationCommand.mode) {
       return {
         shouldContinue: false,
-        reply: { text: "⚙️ Usage: /activation mention|always" },
+        reply: { text: "Usage: /activation mention|always" },
       };
     }
     if (sessionEntry && sessionStore && sessionKey) {
@@ -495,7 +495,7 @@ export async function handleCommands(params: {
     }
     return {
       shouldContinue: false,
-      reply: { text: `⚙️ Group activation set to ${activationCommand.mode}.` },
+      reply: { text: `System: Group activation set to ${activationCommand.mode}.` },
     };
   }
 
@@ -509,7 +509,7 @@ export async function handleCommands(params: {
     if (!sendPolicyCommand.mode) {
       return {
         shouldContinue: false,
-        reply: { text: "⚙️ Usage: /send on|off|inherit" },
+        reply: { text: "Usage: /send on|off|inherit" },
       };
     }
     if (sessionEntry && sessionStore && sessionKey) {
@@ -532,7 +532,7 @@ export async function handleCommands(params: {
           : "off";
     return {
       shouldContinue: false,
-      reply: { text: `⚙️ Send policy set to ${label}.` },
+      reply: { text: `Send policy set to ${label}.` },
     };
   }
 
@@ -547,7 +547,7 @@ export async function handleCommands(params: {
       return {
         shouldContinue: false,
         reply: {
-          text: "⚠️ /restart is disabled. Set commands.restart=true to enable.",
+          text: "/restart is disabled. Set commands.restart=true to enable.",
         },
       };
     }
@@ -557,7 +557,7 @@ export async function handleCommands(params: {
       return {
         shouldContinue: false,
         reply: {
-          text: "⚙️ Restarting clawdbot in-process (SIGUSR1); back in a few seconds.",
+          text: "Restarting Farm Friend Terminal in-process (SIGUSR1); back in a few seconds.",
         },
       };
     }
@@ -569,14 +569,14 @@ export async function handleCommands(params: {
       return {
         shouldContinue: false,
         reply: {
-          text: `⚠️ Restart failed (${restartMethod.method}).${detail}`,
+          text: `Restart failed (${restartMethod.method}).${detail}`,
         },
       };
     }
     return {
       shouldContinue: false,
       reply: {
-        text: `⚙️ Restarting clawdbot via ${restartMethod.method}; give me a few seconds to come back online.`,
+        text: `Restarting Farm Friend Terminal via ${restartMethod.method}; give me a few seconds to come back online.`,
       },
     };
   }
@@ -646,7 +646,7 @@ export async function handleCommands(params: {
     }
     const senderId = ctx.SenderId ?? "";
     const senderUsername = ctx.SenderUsername ?? "";
-    const lines = ["🧭 Identity", `Provider: ${command.provider}`];
+    const lines = ["Identity", `Provider: ${command.provider}`];
     if (senderId) lines.push(`User id: ${senderId}`);
     if (senderUsername) {
       const handle = senderUsername.startsWith("@")
@@ -680,14 +680,14 @@ export async function handleCommands(params: {
       return {
         shouldContinue: false,
         reply: {
-          text: "⚠️ /config is disabled. Set commands.config=true to enable.",
+          text: "Warning: /config is disabled. Set commands.config=true to enable.",
         },
       };
     }
     if (configCommand.action === "error") {
       return {
         shouldContinue: false,
-        reply: { text: `⚠️ ${configCommand.message}` },
+        reply: { text: `Warning: ${configCommand.message}` },
       };
     }
     const snapshot = await readConfigFileSnapshot();
@@ -699,7 +699,7 @@ export async function handleCommands(params: {
       return {
         shouldContinue: false,
         reply: {
-          text: "⚠️ Config file is invalid; fix it before using /config.",
+          text: "Warning: Config file is invalid; fix it before using /config.",
         },
       };
     }
@@ -714,7 +714,7 @@ export async function handleCommands(params: {
         if (!parsedPath.ok || !parsedPath.path) {
           return {
             shouldContinue: false,
-            reply: { text: `⚠️ ${parsedPath.error ?? "Invalid path."}` },
+            reply: { text: `Warning: ${parsedPath.error ?? "Invalid path."}` },
           };
         }
         const value = getConfigValueAtPath(parsedBase, parsedPath.path);
@@ -722,14 +722,14 @@ export async function handleCommands(params: {
         return {
           shouldContinue: false,
           reply: {
-            text: `⚙️ Config ${pathRaw}:\n\`\`\`json\n${rendered}\n\`\`\``,
+            text: `System: Config ${pathRaw}:\n\`\`\`json\n${rendered}\n\`\`\``,
           },
         };
       }
       const json = JSON.stringify(parsedBase, null, 2);
       return {
         shouldContinue: false,
-        reply: { text: `⚙️ Config (raw):\n\`\`\`json\n${json}\n\`\`\`` },
+        reply: { text: `System: Config (raw):\n\`\`\`json\n${json}\n\`\`\`` },
       };
     }
 
@@ -738,14 +738,14 @@ export async function handleCommands(params: {
       if (!parsedPath.ok || !parsedPath.path) {
         return {
           shouldContinue: false,
-          reply: { text: `⚠️ ${parsedPath.error ?? "Invalid path."}` },
+          reply: { text: `Warning: ${parsedPath.error ?? "Invalid path."}` },
         };
       }
       const removed = unsetConfigValueAtPath(parsedBase, parsedPath.path);
       if (!removed) {
         return {
           shouldContinue: false,
-          reply: { text: `⚙️ No config value found for ${configCommand.path}.` },
+          reply: { text: `System: No config value found for ${configCommand.path}.` },
         };
       }
       const validated = validateConfigObject(parsedBase);
@@ -754,14 +754,14 @@ export async function handleCommands(params: {
         return {
           shouldContinue: false,
           reply: {
-            text: `⚠️ Config invalid after unset (${issue.path}: ${issue.message}).`,
+            text: `Warning: Config invalid after unset (${issue.path}: ${issue.message}).`,
           },
         };
       }
       await writeConfigFile(validated.config);
       return {
         shouldContinue: false,
-        reply: { text: `⚙️ Config updated: ${configCommand.path} removed.` },
+        reply: { text: `System: Config updated: ${configCommand.path} removed.` },
       };
     }
 
@@ -770,7 +770,7 @@ export async function handleCommands(params: {
       if (!parsedPath.ok || !parsedPath.path) {
         return {
           shouldContinue: false,
-          reply: { text: `⚠️ ${parsedPath.error ?? "Invalid path."}` },
+          reply: { text: `Warning: ${parsedPath.error ?? "Invalid path."}` },
         };
       }
       setConfigValueAtPath(parsedBase, parsedPath.path, configCommand.value);
@@ -780,7 +780,7 @@ export async function handleCommands(params: {
         return {
           shouldContinue: false,
           reply: {
-            text: `⚠️ Config invalid after set (${issue.path}: ${issue.message}).`,
+            text: `Warning: Config invalid after set (${issue.path}: ${issue.message}).`,
           },
         };
       }
@@ -792,7 +792,7 @@ export async function handleCommands(params: {
       return {
         shouldContinue: false,
         reply: {
-          text: `⚙️ Config updated: ${configCommand.path}=${valueLabel ?? "null"}`,
+          text: `System: Config updated: ${configCommand.path}=${valueLabel ?? "null"}`,
         },
       };
     }
@@ -812,14 +812,14 @@ export async function handleCommands(params: {
       return {
         shouldContinue: false,
         reply: {
-          text: "⚠️ /debug is disabled. Set commands.debug=true to enable.",
+          text: "Warning: /debug is disabled. Set commands.debug=true to enable.",
         },
       };
     }
     if (debugCommand.action === "error") {
       return {
         shouldContinue: false,
-        reply: { text: `⚠️ ${debugCommand.message}` },
+        reply: { text: `Warning: ${debugCommand.message}` },
       };
     }
     if (debugCommand.action === "show") {
@@ -828,14 +828,14 @@ export async function handleCommands(params: {
       if (!hasOverrides) {
         return {
           shouldContinue: false,
-          reply: { text: "⚙️ Debug overrides: (none)" },
+          reply: { text: "System: Debug overrides: (none)" },
         };
       }
       const json = JSON.stringify(overrides, null, 2);
       return {
         shouldContinue: false,
         reply: {
-          text: `⚙️ Debug overrides (memory-only):\n\`\`\`json\n${json}\n\`\`\``,
+          text: `System: Debug overrides (memory-only):\n\`\`\`json\n${json}\n\`\`\``,
         },
       };
     }
@@ -843,7 +843,7 @@ export async function handleCommands(params: {
       resetConfigOverrides();
       return {
         shouldContinue: false,
-        reply: { text: "⚙️ Debug overrides cleared; using config on disk." },
+        reply: { text: "System: Debug overrides cleared; using config on disk." },
       };
     }
     if (debugCommand.action === "unset") {
@@ -851,20 +851,20 @@ export async function handleCommands(params: {
       if (!result.ok) {
         return {
           shouldContinue: false,
-          reply: { text: `⚠️ ${result.error ?? "Invalid path."}` },
+          reply: { text: `Warning: ${result.error ?? "Invalid path."}` },
         };
       }
       if (!result.removed) {
         return {
           shouldContinue: false,
           reply: {
-            text: `⚙️ No debug override found for ${debugCommand.path}.`,
+            text: `System: No debug override found for ${debugCommand.path}.`,
           },
         };
       }
       return {
         shouldContinue: false,
-        reply: { text: `⚙️ Debug override removed for ${debugCommand.path}.` },
+        reply: { text: `System: Debug override removed for ${debugCommand.path}.` },
       };
     }
     if (debugCommand.action === "set") {
@@ -872,7 +872,7 @@ export async function handleCommands(params: {
       if (!result.ok) {
         return {
           shouldContinue: false,
-          reply: { text: `⚠️ ${result.error ?? "Invalid override."}` },
+          reply: { text: `Warning: ${result.error ?? "Invalid override."}` },
         };
       }
       const valueLabel =
@@ -882,7 +882,7 @@ export async function handleCommands(params: {
       return {
         shouldContinue: false,
         reply: {
-          text: `⚙️ Debug override set: ${debugCommand.path}=${valueLabel ?? "null"}`,
+          text: `System: Debug override set: ${debugCommand.path}=${valueLabel ?? "null"}`,
         },
       };
     }
@@ -915,7 +915,7 @@ export async function handleCommands(params: {
     } else if (command.abortKey) {
       setAbortMemory(command.abortKey, true);
     }
-    return { shouldContinue: false, reply: { text: "⚙️ Agent was aborted." } };
+    return { shouldContinue: false, reply: { text: "System: Agent was aborted." } };
   }
 
   const compactRequested =
@@ -931,7 +931,7 @@ export async function handleCommands(params: {
     if (!sessionEntry?.sessionId) {
       return {
         shouldContinue: false,
-        reply: { text: "⚙️ Compaction unavailable (missing session id)." },
+        reply: { text: "System: Compaction unavailable (missing session id)." },
       };
     }
     const sessionId = sessionEntry.sessionId;
@@ -994,7 +994,7 @@ export async function handleCommands(params: {
       ? `${compactLabel}: ${reason} • ${contextSummary}`
       : `${compactLabel} • ${contextSummary}`;
     enqueueSystemEvent(line, { sessionKey });
-    return { shouldContinue: false, reply: { text: `⚙️ ${line}` } };
+    return { shouldContinue: false, reply: { text: `System: ${line}` } };
   }
 
   const abortRequested = isAbortTrigger(command.rawBodyNormalized);
@@ -1018,7 +1018,7 @@ export async function handleCommands(params: {
     } else if (command.abortKey) {
       setAbortMemory(command.abortKey, true);
     }
-    return { shouldContinue: false, reply: { text: "⚙️ Agent was aborted." } };
+    return { shouldContinue: false, reply: { text: "System: Agent was aborted." } };
   }
 
   const sendPolicy = resolveSendPolicy({

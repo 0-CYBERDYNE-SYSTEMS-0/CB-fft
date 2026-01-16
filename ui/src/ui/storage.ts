@@ -8,6 +8,7 @@ export type UiSettings = {
   sessionKey: string;
   lastActiveSessionKey: string;
   theme: ThemeMode;
+  fieldMode: boolean;
   chatFocusMode: boolean;
   splitRatio: number; // Sidebar split ratio (0.4 to 0.7, default 0.6)
   useNewChatLayout: boolean; // Slack-style grouped messages layout
@@ -27,6 +28,7 @@ export function loadSettings(): UiSettings {
     sessionKey: "main",
     lastActiveSessionKey: "main",
     theme: "system",
+    fieldMode: false,
     chatFocusMode: false,
     splitRatio: 0.6,
     useNewChatLayout: true, // Enabled by default
@@ -61,6 +63,10 @@ export function loadSettings(): UiSettings {
         parsed.theme === "system"
           ? parsed.theme
           : defaults.theme,
+      fieldMode:
+        typeof parsed.fieldMode === "boolean"
+          ? parsed.fieldMode
+          : defaults.fieldMode,
       chatFocusMode:
         typeof parsed.chatFocusMode === "boolean"
           ? parsed.chatFocusMode

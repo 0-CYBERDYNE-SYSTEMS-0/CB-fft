@@ -324,7 +324,7 @@ function renderProvider(
       return html`
         <div class="card">
           <div class="card-title">Telegram</div>
-          <div class="card-sub">Bot token and delivery options.</div>
+          <div class="card-sub">Service token and delivery options.</div>
 
           <div class="status-list" style="margin-top: 16px;">
             <div>
@@ -365,7 +365,7 @@ function renderProvider(
 
           <div class="form-grid" style="margin-top: 16px;">
             <label class="field">
-              <span>Bot token</span>
+              <span>Service token</span>
               <input
                 type="password"
                 .value=${props.telegramForm.token}
@@ -462,7 +462,7 @@ function renderProvider(
           </div>
 
           <div class="callout" style="margin-top: 12px;">
-            Allow from supports numeric user IDs (recommended) or @usernames. DM the bot
+            Allow from supports numeric user IDs (recommended) or @usernames. Send a DM
             to get your ID, or run /whoami.
           </div>
 
@@ -515,7 +515,7 @@ function renderProvider(
       return html`
         <div class="card">
           <div class="card-title">Discord</div>
-          <div class="card-sub">Bot connection and probe status.</div>
+          <div class="card-sub">Service connection and probe status.</div>
 
           <div class="status-list" style="margin-top: 16px;">
             <div>
@@ -527,7 +527,7 @@ function renderProvider(
               <span>${discord?.running ? "Yes" : "No"}</span>
             </div>
             <div>
-              <span class="label">Bot</span>
+              <span class="label">Service</span>
               <span>${botName ? `@${botName}` : "n/a"}</span>
             </div>
             <div>
@@ -569,7 +569,7 @@ function renderProvider(
               </select>
             </label>
             <label class="field">
-              <span>Bot token</span>
+              <span>Service token</span>
               <input
                 type="password"
                 .value=${props.discordForm.token}
@@ -1039,7 +1039,7 @@ function renderProvider(
       return html`
         <div class="card">
           <div class="card-title">Slack</div>
-          <div class="card-sub">Socket mode status and bot details.</div>
+          <div class="card-sub">Socket mode status and service details.</div>
 
           <div class="status-list" style="margin-top: 16px;">
             <div>
@@ -1051,7 +1051,7 @@ function renderProvider(
               <span>${slack?.running ? "Yes" : "No"}</span>
             </div>
             <div>
-              <span class="label">Bot</span>
+              <span class="label">Service</span>
               <span>${botName ? botName : "n/a"}</span>
             </div>
             <div>
@@ -1097,7 +1097,7 @@ function renderProvider(
               </select>
             </label>
             <label class="field">
-              <span>Bot token</span>
+              <span>Service token</span>
               <input
                 type="password"
                 .value=${props.slackForm.botToken}

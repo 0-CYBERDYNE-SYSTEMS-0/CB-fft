@@ -486,7 +486,8 @@ enum BridgePairingApprover {
             let name = request.displayName ?? request.nodeId
             let remote = request.remoteAddress?.trimmingCharacters(in: .whitespacesAndNewlines).nonEmpty
             let alert = NSAlert()
-            alert.messageText = isRepair ? "Re-pair Clawdbot Node?" : "Pair Clawdbot Node?"
+            alert.messageText =
+                isRepair ? "Re-pair Farm Friend Terminal Node?" : "Pair Farm Friend Terminal Node?"
             alert.informativeText = """
             Node: \(name)
             IP: \(remote ?? "unknown")

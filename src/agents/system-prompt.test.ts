@@ -93,7 +93,7 @@ describe("buildAgentSystemPrompt", () => {
       toolNames: ["gateway", "exec"],
     });
 
-    expect(prompt).toContain("## Clawdbot Self-Update");
+    expect(prompt).toContain("## Farm Friend Terminal Self-Update");
     expect(prompt).toContain("config.apply");
     expect(prompt).toContain("update.run");
   });

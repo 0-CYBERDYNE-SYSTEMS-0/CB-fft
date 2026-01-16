@@ -29,12 +29,16 @@ function isDisabledByEnv() {
 
 function safeServiceName(name: string) {
   const trimmed = name.trim();
-  return trimmed.length > 0 ? trimmed : "Clawdbot";
+  return trimmed.length > 0 ? trimmed : "Farm Friend Terminal";
 }
 
 function prettifyInstanceName(name: string) {
   const normalized = name.trim().replace(/\s+/g, " ");
-  return normalized.replace(/\s+\(Clawdbot\)\s*$/i, "").trim() || normalized;
+  return (
+    normalized
+      .replace(/\s+\((Clawdbot|Farm Friend Terminal)\)\s*$/i, "")
+      .trim() || normalized
+  );
 }
 
 type BonjourService = {
@@ -89,11 +93,11 @@ export async function startGatewayBonjourAdvertiser(
       .hostname()
       .replace(/\.local$/i, "")
       .split(".")[0]
-      .trim() || "clawdbot";
+      .trim() || "farm-friend";
   const instanceName =
     typeof opts.instanceName === "string" && opts.instanceName.trim()
       ? opts.instanceName.trim()
-      : `${hostname} (Clawdbot)`;
+      : `${hostname} (Farm Friend Terminal)`;
   const displayName = prettifyInstanceName(instanceName);
 
   const txtBase: Record<string, string> = {

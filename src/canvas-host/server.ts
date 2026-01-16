@@ -123,7 +123,9 @@ function defaultIndexHTML() {
 
   function send(name, sourceComponentId) {
     if (!hasHelper()) {
-      log("No action bridge found. Ensure you're viewing this on an iOS/Android Clawdbot node canvas.");
+      log(
+        "No action bridge found. Ensure you're viewing this on an iOS/Android Farm Friend Terminal node canvas.",
+      );
       return;
     }
     const ok = window.clawdbotSendUserAction({

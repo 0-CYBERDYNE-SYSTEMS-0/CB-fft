@@ -27,23 +27,23 @@ describe("iconForTab", () => {
   });
 
   it("returns stable icons for known tabs", () => {
-    expect(iconForTab("chat")).toBe("💬");
-    expect(iconForTab("overview")).toBe("📊");
-    expect(iconForTab("connections")).toBe("🔗");
-    expect(iconForTab("instances")).toBe("📡");
-    expect(iconForTab("sessions")).toBe("📄");
-    expect(iconForTab("cron")).toBe("⏰");
-    expect(iconForTab("skills")).toBe("⚡️");
-    expect(iconForTab("nodes")).toBe("🖥️");
-    expect(iconForTab("config")).toBe("⚙️");
-    expect(iconForTab("debug")).toBe("🐞");
-    expect(iconForTab("logs")).toBe("🧾");
+    expect(iconForTab("chat")).toBe("chat");
+    expect(iconForTab("overview")).toBe("overview");
+    expect(iconForTab("connections")).toBe("connections");
+    expect(iconForTab("instances")).toBe("instances");
+    expect(iconForTab("sessions")).toBe("sessions");
+    expect(iconForTab("cron")).toBe("cron");
+    expect(iconForTab("skills")).toBe("skills");
+    expect(iconForTab("nodes")).toBe("nodes");
+    expect(iconForTab("config")).toBe("config");
+    expect(iconForTab("debug")).toBe("debug");
+    expect(iconForTab("logs")).toBe("logs");
   });
 
   it("returns a fallback icon for unknown tab", () => {
     // TypeScript won't allow this normally, but runtime could receive unexpected values
     const unknownTab = "unknown" as Tab;
-    expect(iconForTab(unknownTab)).toBe("📁");
+    expect(iconForTab(unknownTab)).toBe("default");
   });
 });
 
@@ -57,9 +57,9 @@ describe("titleForTab", () => {
   });
 
   it("returns expected titles", () => {
-    expect(titleForTab("chat")).toBe("Chat");
-    expect(titleForTab("overview")).toBe("Overview");
-    expect(titleForTab("cron")).toBe("Cron Jobs");
+    expect(titleForTab("chat")).toBe("Field Chat");
+    expect(titleForTab("overview")).toBe("Field Overview");
+    expect(titleForTab("cron")).toBe("Routines");
   });
 });
 
@@ -72,8 +72,8 @@ describe("subtitleForTab", () => {
   });
 
   it("returns descriptive subtitles", () => {
-    expect(subtitleForTab("chat")).toContain("chat session");
-    expect(subtitleForTab("config")).toContain("clawdbot.json");
+    expect(subtitleForTab("chat")).toContain("field chat");
+    expect(subtitleForTab("config")).toContain("system config");
   });
 });
 
@@ -176,10 +176,10 @@ describe("inferBasePathFromPathname", () => {
 describe("TAB_GROUPS", () => {
   it("contains all expected groups", () => {
     const labels = TAB_GROUPS.map((g) => g.label);
-    expect(labels).toContain("Chat");
-    expect(labels).toContain("Control");
-    expect(labels).toContain("Agent");
-    expect(labels).toContain("Settings");
+    expect(labels).toContain("Field");
+    expect(labels).toContain("Operations");
+    expect(labels).toContain("Tools");
+    expect(labels).toContain("System");
   });
 
   it("all tabs are unique", () => {

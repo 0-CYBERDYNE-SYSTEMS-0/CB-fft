@@ -158,9 +158,10 @@ function parseIdentityMarkdown(content: string): AgentIdentity {
     const value = match[2]?.trim();
     if (!value) continue;
     if (label === "name") identity.name = value;
-    if (label === "emoji") identity.emoji = value;
-    if (label === "creature") identity.creature = value;
-    if (label === "vibe") identity.vibe = value;
+    if (label === "emoji" || label === "mark" || label === "marker")
+      identity.emoji = value;
+    if (label === "creature" || label === "role") identity.creature = value;
+    if (label === "vibe" || label === "voice") identity.vibe = value;
   }
   return identity;
 }
@@ -859,7 +860,7 @@ export async function agentsAddCommand(
 
   const prompter = createClackPrompter();
   try {
-    await prompter.intro("Add Clawdbot agent");
+    await prompter.intro("Add Farm Friend agent");
     const name =
       nameInput ??
       (await prompter.text({

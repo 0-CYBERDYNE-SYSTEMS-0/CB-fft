@@ -63,7 +63,7 @@ enum DebugActions {
     }
 
     static func sendTestNotification() async {
-        _ = await NotificationManager().send(title: "Clawdbot", body: "Test notification", sound: nil)
+        _ = await NotificationManager().send(title: "Farm Friend Terminal", body: "Test notification", sound: nil)
     }
 
     static func sendDebugVoice() async -> Result<String, DebugActionError> {

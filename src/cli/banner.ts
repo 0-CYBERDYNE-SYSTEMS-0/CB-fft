@@ -38,7 +38,7 @@ export function formatCliBannerLine(
   const commitLabel = commit ?? "unknown";
   const tagline = pickTagline(options);
   const rich = options.richTty ?? isRich();
-  const title = "🦞 Clawdbot";
+  const title = "Farm Friend Terminal";
   if (rich) {
     return `${theme.heading(title)} ${theme.info(version)} ${theme.muted(
       `(${commitLabel})`,
@@ -47,34 +47,39 @@ export function formatCliBannerLine(
   return `${title} ${version} (${commitLabel}) — ${tagline}`;
 }
 
-const LOBSTER_ASCII = [
-  "░████░█░░░░░█████░█░░░█░███░░████░░████░░▀█▀",
-  "█░░░░░█░░░░░█░░░█░█░█░█░█░░█░█░░░█░█░░░█░░█░",
-  "█░░░░░█░░░░░█████░█░█░█░█░░█░████░░█░░░█░░█░",
-  "█░░░░░█░░░░░█░░░█░█░█░█░█░░█░█░░█░░█░░░█░░█░",
-  "░████░█████░█░░░█░░█░█░░███░░████░░░███░░░█░",
-  "              🦞 FRESH DAILY 🦞",
+const BARN_ASCII = [
+  "        #######        ",
+  "      ##_______##      ",
+  "     ##_/____\\_##     ",
+  "    ## /     \\ ##    ",
+  "   ##_/_______\\_##   ",
+  "   ##  |  _  |  ##    ",
+  "   ##  | | | |  ##    ",
+  "   ##  | |_| |  ##    ",
+  "   ##  |_____|  ##    ",
+  "    ##_________##     ",
+  "      FARM FRIEND      ",
+  "       TERMINAL        ",
 ];
 
 export function formatCliBannerArt(options: BannerOptions = {}): string {
   const rich = options.richTty ?? isRich();
-  if (!rich) return LOBSTER_ASCII.join("\n");
+  if (!rich) return BARN_ASCII.join("\n");
 
   const colorChar = (ch: string) => {
-    if (ch === "█") return theme.accentBright(ch);
-    if (ch === "░") return theme.accentDim(ch);
-    if (ch === "▀") return theme.accent(ch);
+    if (ch === "#") return theme.accentBright(ch);
+    if (ch === "_") return theme.accentDim(ch);
+    if (ch === "/" || ch === "\\") return theme.accent(ch);
+    if (ch === "|") return theme.accentDim(ch);
     return theme.muted(ch);
   };
 
-  const colored = LOBSTER_ASCII.map((line) => {
-    if (line.includes("FRESH DAILY")) {
-      return (
-        theme.muted("              ") +
-        theme.accent("🦞") +
-        theme.info(" FRESH DAILY ") +
-        theme.accent("🦞")
-      );
+  const colored = BARN_ASCII.map((line) => {
+    if (line.includes("FARM FRIEND")) {
+      return theme.info(line);
+    }
+    if (line.includes("TERMINAL")) {
+      return theme.accentDim(line);
     }
     return splitGraphemes(line).map(colorChar).join("");
   });

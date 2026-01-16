@@ -97,7 +97,7 @@ fun ChatComposer(
                 },
                 trailingIcon = {
                   if (entry.key == sessionKey) {
-                    Text("✓")
+                    Text("OK")
                   } else {
                     Spacer(modifier = Modifier.width(10.dp))
                   }
@@ -226,7 +226,7 @@ private fun ThinkingMenuItem(
     },
     trailingIcon = {
       if (value == current.trim().lowercase()) {
-        Text("✓")
+        Text("OK")
       } else {
         Spacer(modifier = Modifier.width(10.dp))
       }

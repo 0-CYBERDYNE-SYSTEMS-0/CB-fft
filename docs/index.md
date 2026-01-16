@@ -1,18 +1,18 @@
 ---
-summary: "Top-level overview of Clawdbot, features, and purpose"
+summary: "Top-level overview of Farm Friend Terminal, features, and purpose"
 read_when:
-  - Introducing Clawdbot to newcomers
+  - Introducing Farm Friend Terminal to newcomers
 ---
-# Clawdbot 🦞
+# Farm Friend Terminal
 
-> *"EXFOLIATE! EXFOLIATE!"* — A space lobster, probably
+> *"Neighborly, practical, and professional."* — Farm Friend Terminal
 
 <p align="center">
-  <img src="whatsapp-clawd.jpg" alt="Clawdbot" width="420" />
+  <img src="whatsapp-clawd.jpg" alt="Farm Friend Terminal" width="420" />
 </p>
 
 <p align="center">
-  <strong>Any OS + WhatsApp/Telegram/Discord/iMessage gateway for AI agents (Pi).</strong><br />
+  <strong>Any OS + WhatsApp/Telegram/Discord/iMessage gateway for farm‑savvy AI agents.</strong><br />
   Send a message, get an agent response — from your pocket.
 </p>
 
@@ -20,11 +20,11 @@ read_when:
   <a href="https://github.com/clawdbot/clawdbot">GitHub</a> ·
   <a href="https://github.com/clawdbot/clawdbot/releases">Releases</a> ·
   <a href="/">Docs</a> ·
-  <a href="/start/clawd">Clawdbot assistant setup</a>
+  <a href="/start/wizard">Farm Friend Terminal assistant setup</a>
 </p>
 
-Clawdbot bridges WhatsApp (via WhatsApp Web / Baileys), Telegram (Bot API / grammY), Discord (Bot API / discord.js), and iMessage (imsg CLI) to coding agents like [Pi](https://github.com/badlogic/pi-mono).
-Clawdbot also powers [Clawd](https://clawd.me), the space‑lobster assistant.
+Farm Friend Terminal bridges WhatsApp (via WhatsApp Web / Baileys), Telegram (Bot API / grammY), Discord (Bot API / discord.js), and iMessage (imsg CLI) to coding agents like [Pi](https://github.com/badlogic/pi-mono).
+It’s designed for practical, on‑farm use: planning, research, compliance, and day‑to‑day operations.
 
 ## Start here
 
@@ -57,7 +57,7 @@ WhatsApp / Telegram / Discord
               ├─ Pi agent (RPC)
               ├─ CLI (clawdbot …)
               ├─ Chat UI (SwiftUI)
-              ├─ macOS app (Clawdbot.app)
+              ├─ macOS app (Farm Friend Terminal.app)
               ├─ iOS node via Bridge + pairing
               └─ Android node via Bridge + pairing
 ```
@@ -137,14 +137,14 @@ clawdbot gateway --port 19001
 Send a test message (requires a running Gateway):
 
 ```bash
-clawdbot message send --to +15555550123 --message "Hello from Clawdbot"
+clawdbot message send --to +15555550123 --message "Hello from Farm Friend Terminal"
 ```
 
 ## Configuration (optional)
 
 Config lives at `~/.clawdbot/clawdbot.json`.
 
-- If you **do nothing**, Clawdbot uses the bundled Pi binary in RPC mode with per-sender sessions.
+- If you **do nothing**, Farm Friend Terminal uses the bundled Pi binary in RPC mode with per-sender sessions.
 - If you want to lock it down, start with `whatsapp.allowFrom` and (for groups) mention rules.
 
 Example:
@@ -171,7 +171,7 @@ Example:
   - [Updating / rollback](/install/updating)
   - [Pairing (DM + nodes)](/start/pairing)
   - [Nix mode](/install/nix)
-  - [Clawdbot assistant setup (Clawd)](/start/clawd)
+  - [Farm Friend Terminal assistant setup](/start/wizard)
   - [Skills](/tools/skills)
   - [Skills config](/tools/skills-config)
   - [Workspace templates](/reference/templates/AGENTS)
@@ -207,7 +207,7 @@ Example:
 
 ## The name
 
-**Clawdbot = CLAW + TARDIS** — because every space lobster needs a time-and-space machine.
+**Farm Friend Terminal** is built for farm‑ready automation and long‑running assistance.
 
 ---
 

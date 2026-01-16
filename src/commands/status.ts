@@ -913,7 +913,7 @@ export async function statusCommand(
     },
   ];
 
-  runtime.log(theme.heading("Clawdbot status"));
+  runtime.log(theme.heading("Farm Friend Terminal status"));
   runtime.log("");
   runtime.log(theme.heading("Overview"));
   runtime.log(

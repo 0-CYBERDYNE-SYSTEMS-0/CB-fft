@@ -184,7 +184,7 @@ export async function doctorCommand(
 ) {
   const prompter = createDoctorPrompter({ runtime, options });
   printWizardHeader(runtime);
-  intro("Clawdbot doctor");
+  intro("Farm Friend Terminal doctor");
 
   const updateInProgress = process.env.CLAWDBOT_UPDATE_IN_PROGRESS === "1";
   const canOfferUpdate =
@@ -203,7 +203,7 @@ export async function doctorCommand(
       const git = await detectClawdbotGitCheckout(root);
       if (git === "git") {
         const shouldUpdate = await prompter.confirm({
-          message: "Update Clawdbot from git before running doctor?",
+          message: "Update Farm Friend Terminal from git before running doctor?",
           initialValue: true,
         });
         if (shouldUpdate) {

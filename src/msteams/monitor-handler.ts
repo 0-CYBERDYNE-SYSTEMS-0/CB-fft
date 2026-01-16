@@ -587,7 +587,7 @@ function createMSTeamsMessageHandler(deps: MSTeamsMessageHandlerDeps) {
       // Try to send error message back to Teams.
       try {
         await context.sendActivity(
-          `⚠️ Agent failed: ${err instanceof Error ? err.message : String(err)}`,
+          `Agent failed: ${err instanceof Error ? err.message : String(err)}`,
         );
       } catch {
         // Best effort.

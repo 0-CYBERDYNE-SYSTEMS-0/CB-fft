@@ -91,7 +91,7 @@ function renderSkill(skill: SkillStatusEntry, props: SkillsProps) {
     <div class="list-item">
       <div class="list-main">
         <div class="list-title">
-          ${skill.emoji ? `${skill.emoji} ` : ""}${skill.name}
+          ${skill.name}
         </div>
         <div class="list-sub">${clampText(skill.description, 140)}</div>
         <div class="chip-row" style="margin-top: 6px;">

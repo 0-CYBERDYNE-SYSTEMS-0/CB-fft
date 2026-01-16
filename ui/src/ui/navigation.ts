@@ -1,11 +1,11 @@
 export const TAB_GROUPS = [
-  { label: "Chat", tabs: ["chat"] },
+  { label: "Field", tabs: ["chat"] },
   {
-    label: "Control",
+    label: "Operations",
     tabs: ["overview", "connections", "instances", "sessions", "cron"],
   },
-  { label: "Agent", tabs: ["skills", "nodes"] },
-  { label: "Settings", tabs: ["config", "debug", "logs"] },
+  { label: "Tools", tabs: ["skills", "nodes"] },
+  { label: "System", tabs: ["config", "debug", "logs"] },
 ] as const;
 
 export type Tab =
@@ -101,85 +101,85 @@ export function inferBasePathFromPathname(pathname: string): string {
 export function iconForTab(tab: Tab): string {
   switch (tab) {
     case "chat":
-      return "💬";
+      return "chat";
     case "overview":
-      return "📊";
+      return "overview";
     case "connections":
-      return "🔗";
+      return "connections";
     case "instances":
-      return "📡";
+      return "instances";
     case "sessions":
-      return "📄";
+      return "sessions";
     case "cron":
-      return "⏰";
+      return "cron";
     case "skills":
-      return "⚡️";
+      return "skills";
     case "nodes":
-      return "🖥️";
+      return "nodes";
     case "config":
-      return "⚙️";
+      return "config";
     case "debug":
-      return "🐞";
+      return "debug";
     case "logs":
-      return "🧾";
+      return "logs";
     default:
-      return "📁";
+      return "default";
   }
 }
 
 export function titleForTab(tab: Tab) {
   switch (tab) {
     case "overview":
-      return "Overview";
+      return "Field Overview";
     case "connections":
-      return "Connections";
+      return "Channels";
     case "instances":
-      return "Instances";
+      return "Stations";
     case "sessions":
-      return "Sessions";
+      return "Field Notes";
     case "cron":
-      return "Cron Jobs";
+      return "Routines";
     case "skills":
-      return "Skills";
+      return "Toolkits";
     case "nodes":
-      return "Nodes";
+      return "Equipment";
     case "chat":
-      return "Chat";
+      return "Field Chat";
     case "config":
-      return "Config";
+      return "Configuration";
     case "debug":
-      return "Debug";
+      return "Diagnostics";
     case "logs":
-      return "Logs";
+      return "Activity Log";
     default:
-      return "Control";
+      return "Operations";
   }
 }
 
 export function subtitleForTab(tab: Tab) {
   switch (tab) {
     case "overview":
-      return "Gateway status, entry points, and a fast health read.";
+      return "System status, access points, and a quick health check.";
     case "connections":
-      return "Link providers and keep transport settings in sync.";
+      return "Link channels and keep routing settings aligned.";
     case "instances":
-      return "Presence beacons from connected clients and nodes.";
+      return "Presence beacons from connected stations and gear.";
     case "sessions":
-      return "Inspect active sessions and adjust per-session defaults.";
+      return "Review recent runs and tune per-session defaults.";
     case "cron":
-      return "Schedule wakeups and recurring agent runs.";
+      return "Schedule routines and recurring runs.";
     case "skills":
-      return "Manage skill availability and API key injection.";
+      return "Manage toolkits and key access.";
     case "nodes":
-      return "Paired devices, capabilities, and command exposure.";
+      return "Paired devices, capabilities, and commands.";
     case "chat":
-      return "Direct gateway chat session for quick interventions.";
+      return "Direct field chat for quick interventions.";
     case "config":
-      return "Edit ~/.clawdbot/clawdbot.json safely.";
+      return "Edit the system config safely.";
     case "debug":
-      return "Gateway snapshots, events, and manual RPC calls.";
+      return "Snapshots, events, and manual calls.";
     case "logs":
-      return "Live tail of the gateway file logs.";
+      return "Live tail of the log file.";
     default:
       return "";
   }

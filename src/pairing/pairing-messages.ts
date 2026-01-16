@@ -7,13 +7,13 @@ export function buildPairingReply(params: {
 }): string {
   const { provider, idLine, code } = params;
   return [
-    "Clawdbot: access not configured.",
+    "Farm Friend Terminal: access not configured.",
     "",
     idLine,
     "",
     `Pairing code: ${code}`,
     "",
-    "Ask the bot owner to approve with:",
+    "Ask the owner to approve with:",
     `clawdbot pairing approve ${provider} <code>`,
   ].join("\n");
 }

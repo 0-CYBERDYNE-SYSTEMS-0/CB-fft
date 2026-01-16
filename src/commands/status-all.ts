@@ -498,7 +498,7 @@ export async function statusAllCommand(
       });
 
       const lines: string[] = [];
-      lines.push(heading("Clawdbot status --all"));
+      lines.push(heading("Farm Friend Terminal status --all"));
       lines.push("");
       lines.push(heading("Overview"));
       lines.push(overview.trimEnd());

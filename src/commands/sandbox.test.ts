@@ -121,7 +121,7 @@ describe("sandboxListCommand", () => {
         runtime as never,
       );
 
-      expectLogContains(runtime, "📦 Sandbox Containers");
+      expectLogContains(runtime, "Sandbox Containers");
       expectLogContains(runtime, container1.containerName);
       expectLogContains(runtime, container2.containerName);
       expectLogContains(runtime, "Total");
@@ -136,7 +136,7 @@ describe("sandboxListCommand", () => {
         runtime as never,
       );
 
-      expectLogContains(runtime, "🌐 Sandbox Browser Containers");
+      expectLogContains(runtime, "Sandbox Browser Containers");
       expectLogContains(runtime, browser.containerName);
       expectLogContains(runtime, String(browser.cdpPort));
     });
@@ -150,7 +150,7 @@ describe("sandboxListCommand", () => {
         runtime as never,
       );
 
-      expectLogContains(runtime, "⚠️");
+      expectLogContains(runtime, "Warning");
       expectLogContains(runtime, "image mismatch");
       expectLogContains(runtime, "clawdbot sandbox recreate --all");
     });

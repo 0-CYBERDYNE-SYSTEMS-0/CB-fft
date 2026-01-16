@@ -250,7 +250,7 @@ export async function handleOpenAiHttpRequest(
               .map((p) => (typeof p.text === "string" ? p.text : ""))
               .filter(Boolean)
               .join("\n\n")
-          : "No response from Clawdbot.";
+          : "No response from Farm Friend Terminal.";
 
       sendJson(res, 200, {
         id: runId,
@@ -382,7 +382,7 @@ export async function handleOpenAiHttpRequest(
                 .map((p) => (typeof p.text === "string" ? p.text : ""))
                 .filter(Boolean)
                 .join("\n\n")
-            : "No response from Clawdbot.";
+            : "No response from Farm Friend Terminal.";
 
         sawAssistantDelta = true;
         writeSse(res, {

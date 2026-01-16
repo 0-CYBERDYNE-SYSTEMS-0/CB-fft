@@ -150,7 +150,7 @@ Pairing doc: [Pairing](/start/pairing)
 
 ## From source (development)
 
-If you’re hacking on Clawdbot itself, run from source:
+If you’re hacking on Farm Friend Terminal itself, run from source:
 
 ```bash
 git clone https://github.com/clawdbot/clawdbot.git
@@ -174,7 +174,7 @@ In a new terminal:
 ```bash
 clawdbot status
 clawdbot health
-clawdbot message send --to +15555550123 --message "Hello from Clawdbot"
+clawdbot message send --to +15555550123 --message "Hello from Farm Friend Terminal"
 ```
 
 If `health` shows “no auth configured”, go back to the wizard and set OAuth/key auth — the agent won’t be able to respond without it.

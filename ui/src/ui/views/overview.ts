@@ -35,8 +35,8 @@ export function renderOverview(props: OverviewProps) {
   return html`
     <section class="grid grid-cols-2">
       <div class="card">
-        <div class="card-title">Gateway Access</div>
-        <div class="card-sub">Where the dashboard connects and how it authenticates.</div>
+        <div class="card-title">Control Link</div>
+        <div class="card-sub">Where the console connects and how it authenticates.</div>
         <div class="form-grid" style="margin-top: 16px;">
           <label class="field">
             <span>WebSocket URL</span>
@@ -57,7 +57,7 @@ export function renderOverview(props: OverviewProps) {
                 const v = (e.target as HTMLInputElement).value;
                 props.onSettingsChange({ ...props.settings, token: v });
               }}
-              placeholder="CLAWDBOT_GATEWAY_TOKEN"
+              placeholder="GATEWAY_TOKEN"
             />
           </label>
           <label class="field">
@@ -91,8 +91,8 @@ export function renderOverview(props: OverviewProps) {
       </div>
 
       <div class="card">
-        <div class="card-title">Snapshot</div>
-        <div class="card-sub">Latest gateway handshake information.</div>
+        <div class="card-title">System Snapshot</div>
+        <div class="card-sub">Latest handshake from the gateway.</div>
         <div class="stat-grid" style="margin-top: 16px;">
           <div class="stat">
             <div class="stat-label">Status</div>
@@ -109,7 +109,7 @@ export function renderOverview(props: OverviewProps) {
             <div class="stat-value">${tick}</div>
           </div>
           <div class="stat">
-            <div class="stat-label">Last Providers Refresh</div>
+            <div class="stat-label">Last Channel Refresh</div>
             <div class="stat-value">
               ${props.lastProvidersRefresh
                 ? formatAgo(props.lastProvidersRefresh)
@@ -122,7 +122,7 @@ export function renderOverview(props: OverviewProps) {
               ${props.lastError}
             </div>`
           : html`<div class="callout" style="margin-top: 14px;">
-              Use Connections to link WhatsApp, Telegram, Discord, Signal, or iMessage.
+              Use Channels to link WhatsApp, Telegram, Discord, Signal, or iMessage.
             </div>`}
       </div>
     </section>
@@ -139,7 +139,7 @@ export function renderOverview(props: OverviewProps) {
         <div class="muted">Recent session keys tracked by the gateway.</div>
       </div>
       <div class="card stat-card">
-        <div class="stat-label">Cron</div>
+        <div class="stat-label">Routines</div>
         <div class="stat-value">
           ${props.cronEnabled == null
             ? "n/a"
@@ -147,13 +147,13 @@ export function renderOverview(props: OverviewProps) {
               ? "Enabled"
               : "Disabled"}
         </div>
-        <div class="muted">Next wake ${formatNextRun(props.cronNext)}</div>
+        <div class="muted">Next run ${formatNextRun(props.cronNext)}</div>
       </div>
     </section>
 
     <section class="card" style="margin-top: 18px;">
-      <div class="card-title">Notes</div>
-      <div class="card-sub">Quick reminders for remote control setups.</div>
+      <div class="card-title">Access Notes</div>
+      <div class="card-sub">Quick reminders for remote setups.</div>
       <div class="note-grid" style="margin-top: 14px;">
         <div>
           <div class="note-title">Tailscale serve</div>
@@ -166,7 +166,7 @@ export function renderOverview(props: OverviewProps) {
           <div class="muted">Use /new or sessions.patch to reset context.</div>
         </div>
         <div>
-          <div class="note-title">Cron reminders</div>
+          <div class="note-title">Routine reminders</div>
           <div class="muted">Use isolated sessions for recurring runs.</div>
         </div>
       </div>

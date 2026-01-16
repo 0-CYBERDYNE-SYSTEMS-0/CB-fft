@@ -75,7 +75,17 @@ export async function runOnboardingWizard(
   prompter: WizardPrompter,
 ) {
   printWizardHeader(runtime);
-  await prompter.intro("Clawdbot onboarding");
+  await prompter.intro("Farm Friend Terminal setup");
+  await prompter.note(
+    [
+      "What this console can do:",
+      "- Heartbeat automations for check-ins and routines",
+      "- Digital wand actions for quick fixes and one-off tasks",
+      "- Research, legal, real estate, and IT specialist help on demand",
+      "- Adaptive scheduling that learns from your patterns",
+    ].join("\n"),
+    "Capabilities",
+  );
 
   const snapshot = await readConfigFileSnapshot();
   let baseConfig: ClawdbotConfig = snapshot.valid ? snapshot.config : {};
@@ -129,7 +139,7 @@ export async function runOnboardingWizard(
     }
   }
 
-  const quickstartHint = "Configure details later via clawdbot configure.";
+  const quickstartHint = "Configure details later with the configure command.";
   const advancedHint = "Configure port, network, Tailscale, and auth options.";
   const explicitFlow = opts.flow?.trim();
   if (
@@ -787,7 +797,7 @@ export async function runOnboardingWizard(
         "Start TUI (best option!)",
       );
       const wantsTui = await prompter.confirm({
-        message: "Do you want to hatch your bot now?",
+        message: "Do you want to start Farm Friend Terminal now?",
         initialValue: true,
       });
       if (wantsTui) {
@@ -863,8 +873,8 @@ export async function runOnboardingWizard(
       [
         `Dashboard link (with token): ${authedUrl}`,
         controlUiOpened
-          ? "Opened in your browser. Keep that tab to control Clawdbot."
-          : "Copy/paste this URL in a browser on this machine to control Clawdbot.",
+          ? "Opened in your browser. Keep that tab to control the console."
+          : "Copy/paste this URL in a browser on this machine to control the console.",
         controlUiOpenHint,
       ]
         .filter(Boolean)
@@ -875,7 +885,7 @@ export async function runOnboardingWizard(
 
   await prompter.outro(
     controlUiOpened
-      ? "Onboarding complete. Dashboard opened with your token; keep that tab to control Clawdbot."
-      : "Onboarding complete. Use the tokenized dashboard link above to control Clawdbot.",
+    ? "Setup complete. Dashboard opened with your token; keep that tab to control the console."
+    : "Setup complete. Use the tokenized dashboard link above to control the console.",
   );
 }

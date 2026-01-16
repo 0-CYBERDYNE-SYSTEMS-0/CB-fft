@@ -90,8 +90,8 @@ describe("session_status tool", () => {
     const result = await tool.execute("call1", {});
     const details = result.details as { ok?: boolean; statusText?: string };
     expect(details.ok).toBe(true);
-    expect(details.statusText).toContain("Clawdbot");
-    expect(details.statusText).toContain("🧠 Model:");
+    expect(details.statusText).toContain("Farm Friend Terminal");
+    expect(details.statusText).toContain("Model:");
   });
 
   it("errors for unknown session keys", async () => {

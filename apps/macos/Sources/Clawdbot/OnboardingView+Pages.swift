@@ -32,9 +32,9 @@ extension OnboardingView {
     func welcomePage() -> some View {
         self.onboardingPage {
             VStack(spacing: 22) {
-                Text("Welcome to Clawdbot")
+                Text("Welcome to Farm Friend Terminal")
                     .font(.largeTitle.weight(.semibold))
-                Text("Clawdbot is a powerful personal AI assistant that can connect to WhatsApp or Telegram.")
+                Text("Farm Friend Terminal is a farm-savvy AI assistant that can connect to WhatsApp or Telegram.")
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -57,7 +57,7 @@ extension OnboardingView {
                                 "The connected AI agent (e.g. Claude) can trigger powerful actions on your Mac, " +
                                     "including running commands, reading/writing files, and capturing screenshots — " +
                                     "depending on the permissions you grant.\n\n" +
-                                    "Only enable Clawdbot if you understand the risks and trust the prompts and " +
+                                    "Only enable Farm Friend Terminal if you understand the risks and trust the prompts and " +
                                     "integrations you use.")
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
@@ -76,7 +76,7 @@ extension OnboardingView {
             Text("Choose your Gateway")
                 .font(.largeTitle.weight(.semibold))
             Text(
-                "Clawdbot uses a single Gateway that stays running. Pick this Mac, " +
+                "Farm Friend Terminal uses a single Gateway that stays running. Pick this Mac, " +
                     "connect to a discovered bridge nearby for pairing, or configure later.")
                 .font(.body)
                 .foregroundStyle(.secondary)
@@ -297,7 +297,7 @@ extension OnboardingView {
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 540)
                 .fixedSize(horizontal: false, vertical: true)
-            Text("Clawdbot supports any model — we strongly recommend Opus 4.5 for the best experience.")
+            Text("Farm Friend Terminal supports any model — we strongly recommend Opus 4.5 for the best experience.")
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -337,7 +337,7 @@ extension OnboardingView {
                 }
 
                 Text(
-                    "This lets Clawdbot use Claude immediately. Credentials are stored at " +
+                    "This lets Farm Friend Terminal use Claude immediately. Credentials are stored at " +
                         "`~/.clawdbot/credentials/oauth.json` (owner-only).")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
@@ -455,7 +455,7 @@ extension OnboardingView {
         self.onboardingPage {
             Text("Grant permissions")
                 .font(.largeTitle.weight(.semibold))
-            Text("These macOS permissions let Clawdbot automate apps and capture context on this Mac.")
+            Text("These macOS permissions let Farm Friend Terminal automate apps and capture context on this Mac.")
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -556,7 +556,7 @@ extension OnboardingView {
             Text("Agent workspace")
                 .font(.largeTitle.weight(.semibold))
             Text(
-                "Clawdbot runs the agent from a dedicated workspace so it can load `AGENTS.md` " +
+                "Farm Friend Terminal runs the agent from a dedicated workspace so it can load `AGENTS.md` " +
                     "and write files there without mixing into your other projects.")
                 .font(.body)
                 .foregroundStyle(.secondary)
@@ -690,7 +690,7 @@ extension OnboardingView {
                 }
                 self.featureRow(
                     title: "Open the menu bar panel",
-                    subtitle: "Click the Clawdbot menu bar icon for quick chat and status.",
+                    subtitle: "Click the Farm Friend Terminal menu bar icon for quick chat and status.",
                     systemImage: "bubble.left.and.bubble.right")
                 self.featureActionRow(
                     title: "Connect WhatsApp or Telegram",
@@ -776,8 +776,9 @@ extension OnboardingView {
                     LazyVStack(alignment: .leading, spacing: 10) {
                         ForEach(self.onboardingSkillsModel.skills) { skill in
                             HStack(alignment: .top, spacing: 10) {
-                                Text(skill.emoji ?? "✨")
-                                    .font(.callout)
+                                Text(self.skillMarker(for: skill))
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundStyle(.secondary)
                                     .frame(width: 22, alignment: .leading)
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(skill.name)
@@ -799,5 +800,15 @@ extension OnboardingView {
                 .frame(maxHeight: 160)
             }
         }
+    }
+
+    private func skillMarker(for skill: SkillStatus) -> String {
+        let trimmed = skill.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return "SK" }
+        let parts = trimmed.split(whereSeparator: { $0 == " " || $0 == "-" || $0 == "_" })
+        let initials = parts.prefix(2).compactMap(\.first)
+        let marker = String(initials)
+        if !marker.isEmpty { return marker.uppercased() }
+        return String(trimmed.prefix(2)).uppercased()
     }
 }

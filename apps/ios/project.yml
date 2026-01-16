@@ -77,7 +77,7 @@ targets:
     info:
       path: Sources/Info.plist
       properties:
-        CFBundleDisplayName: Clawdbot
+        CFBundleDisplayName: Farm Friend Terminal
         CFBundleIconName: AppIcon
         CFBundleShortVersionString: "2026.1.9"
         CFBundleVersion: "20260109"
@@ -86,16 +86,16 @@ targets:
           UIApplicationSupportsMultipleScenes: false
         UIBackgroundModes:
           - audio
-        NSLocalNetworkUsageDescription: Clawdbot discovers and connects to your Clawdbot bridge on the local network.
+        NSLocalNetworkUsageDescription: Farm Friend Terminal discovers and connects to your Farm Friend Terminal bridge on the local network.
         NSAppTransportSecurity:
           NSAllowsArbitraryLoadsInWebContent: true
         NSBonjourServices:
           - _clawdbot-bridge._tcp
-        NSCameraUsageDescription: Clawdbot can capture photos or short video clips when requested via the bridge.
-        NSLocationWhenInUseUsageDescription: Clawdbot uses your location when you allow location sharing.
-        NSLocationAlwaysAndWhenInUseUsageDescription: Clawdbot can share your location in the background when you enable Always.
-        NSMicrophoneUsageDescription: Clawdbot needs microphone access for voice wake.
-        NSSpeechRecognitionUsageDescription: Clawdbot uses on-device speech recognition for voice wake.
+        NSCameraUsageDescription: Farm Friend Terminal can capture photos or short video clips when requested via the bridge.
+        NSLocationWhenInUseUsageDescription: Farm Friend Terminal uses your location when you allow location sharing.
+        NSLocationAlwaysAndWhenInUseUsageDescription: Farm Friend Terminal can share your location in the background when you enable Always.
+        NSMicrophoneUsageDescription: Farm Friend Terminal needs microphone access for voice wake.
+        NSSpeechRecognitionUsageDescription: Farm Friend Terminal uses on-device speech recognition for voice wake.
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
           - UIInterfaceOrientationPortraitUpsideDown

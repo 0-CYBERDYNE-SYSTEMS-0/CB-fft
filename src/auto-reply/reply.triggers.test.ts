@@ -21,7 +21,7 @@ const usageMocks = vi.hoisted(() => ({
     updatedAt: 0,
     providers: [],
   }),
-  formatUsageSummaryLine: vi.fn().mockReturnValue("📊 Usage: Claude 80% left"),
+  formatUsageSummaryLine: vi.fn().mockReturnValue("Usage: Claude 80% left"),
   resolveUsageProviderId: vi.fn((provider: string) => provider.split("/")[0]),
 }));
 
@@ -229,7 +229,7 @@ describe("trigger handling", () => {
         makeCfg(home),
       );
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toBe("⚙️ Agent was aborted.");
+      expect(text).toBe("System: Agent was aborted.");
       expect(runEmbeddedPiAgent).not.toHaveBeenCalled();
     });
   });
@@ -246,7 +246,7 @@ describe("trigger handling", () => {
         makeCfg(home),
       );
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toBe("⚙️ Agent was aborted.");
+      expect(text).toBe("System: Agent was aborted.");
       expect(runEmbeddedPiAgent).not.toHaveBeenCalled();
     });
   });
@@ -288,7 +288,7 @@ describe("trigger handling", () => {
       );
 
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toBe("⚙️ Agent was aborted.");
+      expect(text).toBe("System: Agent was aborted.");
       expect(vi.mocked(abortEmbeddedPiRun)).toHaveBeenCalledWith(
         targetSessionId,
       );
@@ -602,8 +602,7 @@ describe("trigger handling", () => {
       );
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
       expect(
-        text?.startsWith("⚙️ Restarting") ||
-          text?.startsWith("⚠️ Restart failed"),
+        text?.startsWith("Restarting") || text?.startsWith("Restart failed"),
       ).toBe(true);
       expect(runEmbeddedPiAgent).not.toHaveBeenCalled();
     });
@@ -621,7 +620,7 @@ describe("trigger handling", () => {
         makeCfg(home),
       );
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toContain("Clawdbot");
+      expect(text).toContain("Farm Friend Terminal");
       expect(runEmbeddedPiAgent).not.toHaveBeenCalled();
     });
   });
@@ -638,7 +637,7 @@ describe("trigger handling", () => {
         makeCfg(home),
       );
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toContain("Clawdbot");
+      expect(text).toContain("Farm Friend Terminal");
       expect(runEmbeddedPiAgent).not.toHaveBeenCalled();
     });
   });
@@ -1456,7 +1455,7 @@ describe("trigger handling", () => {
 
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
       expect(text).toBe(
-        "⚠️ Context overflow - conversation too long. Starting fresh might help!",
+        "Warning: Context overflow - conversation too long. Starting fresh might help!",
       );
       expect(runEmbeddedPiAgent).toHaveBeenCalledOnce();
     });
@@ -1480,7 +1479,7 @@ describe("trigger handling", () => {
 
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
       expect(text).toBe(
-        "⚠️ Agent failed before reply: sandbox is not defined. Check gateway logs for details.",
+        "Warning: Agent failed before reply: sandbox is not defined. Check gateway logs for details.",
       );
       expect(runEmbeddedPiAgent).toHaveBeenCalledOnce();
     });
@@ -1614,7 +1613,7 @@ describe("trigger handling", () => {
         cfg,
       );
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text).toBe("⚙️ Group activation set to mention.");
+      expect(text).toBe("System: Group activation set to mention.");
       expect(runEmbeddedPiAgent).not.toHaveBeenCalled();
     });
   });
@@ -1850,7 +1849,7 @@ describe("trigger handling", () => {
         },
       );
       const text = Array.isArray(res) ? res[0]?.text : res?.text;
-      expect(text?.startsWith("⚙️ Compacted")).toBe(true);
+      expect(text?.startsWith("System: Compacted")).toBe(true);
       expect(compactEmbeddedPiSession).toHaveBeenCalledOnce();
       expect(runEmbeddedPiAgent).not.toHaveBeenCalled();
       const store = loadSessionStore(storePath);
@@ -2015,7 +2014,7 @@ describe("trigger handling", () => {
 
 describe("group intro prompts", () => {
   const groupParticipationNote =
-    "Be a good group participant: mostly lurk and follow the conversation; reply only when directly addressed or you can add clear value. Emoji reactions are welcome when available.";
+    "Be a good group participant: mostly lurk and follow the conversation; reply only when directly addressed or you can add clear value. Reactions are optional when available.";
   it("labels Discord groups using the surface metadata", async () => {
     await withTempHome(async (home) => {
       vi.mocked(runEmbeddedPiAgent).mockResolvedValue({

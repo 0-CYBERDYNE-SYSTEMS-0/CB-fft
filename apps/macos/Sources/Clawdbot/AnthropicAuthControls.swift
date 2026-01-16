@@ -176,7 +176,7 @@ struct AnthropicAuthControls: View {
             self.refresh()
             self.pkce = nil
             self.code = ""
-            self.statusText = "Connected. Clawdbot can now use Claude via OAuth."
+            self.statusText = "Connected. Farm Friend Terminal can now use Claude via OAuth."
         } catch {
             self.statusText = "OAuth failed: \(error.localizedDescription)"
         }
