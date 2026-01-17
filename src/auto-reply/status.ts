@@ -309,7 +309,8 @@ export function buildStatusMessage(args: StatusArgs): string {
     reasoningLevel !== "off" ? `Reasoning: ${reasoningLevel}` : null,
     elevatedLabel,
   ];
-  const optionsLine = optionParts.filter(Boolean).join(" · ");
+  const optionsLineRaw = optionParts.filter(Boolean).join(" · ");
+  const optionsLine = optionsLineRaw ? `System: ${optionsLineRaw}` : "";
   const activationParts = [
     groupActivationValue ? `Activation: ${groupActivationValue}` : null,
     `Queue: ${queueMode}${queueDetails}`,
