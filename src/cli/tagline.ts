@@ -8,18 +8,13 @@ const HOLIDAY_TAGLINES = {
   christmas:
     "Christmas: Barn lights on, chores done early, family time protected.",
   eid: "Eid al-Fitr: Clear the queue, share the table, rest well.",
-  diwali:
-    "Diwali: Bright lights, clean tools, smooth handoffs.",
-  easter:
-    "Easter: New season, new plans, same steady hands.",
-  hanukkah:
-    "Hanukkah: Eight nights, steady routines, warm light.",
-  halloween:
-    "Halloween: Keep the lights on and the gates closed.",
+  diwali: "Diwali: Bright lights, clean tools, smooth handoffs.",
+  easter: "Easter: New season, new plans, same steady hands.",
+  hanukkah: "Hanukkah: Eight nights, steady routines, warm light.",
+  halloween: "Halloween: Keep the lights on and the gates closed.",
   thanksgiving:
     "Thanksgiving: Grateful for good weather windows and reliable routines.",
-  valentines:
-    "Valentine's Day: Save time for the people who keep you going.",
+  valentines: "Valentine's Day: Save time for the people who keep you going.",
 } as const;
 
 const TAGLINES: string[] = [

@@ -154,7 +154,10 @@ async function promptWhatsAppAllowFrom(
     message: "WhatsApp phone setup",
     options: [
       { value: "personal", label: "This is my personal phone number" },
-      { value: "separate", label: "Separate phone just for Farm Friend Terminal" },
+      {
+        value: "separate",
+        label: "Separate phone just for Farm Friend Terminal",
+      },
     ],
   })) as "personal" | "separate";
 

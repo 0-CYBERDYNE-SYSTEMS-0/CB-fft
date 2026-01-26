@@ -469,7 +469,9 @@ export async function handleCommands(params: {
     if (!isGroup) {
       return {
         shouldContinue: false,
-        reply: { text: "System: Group activation only applies to group chats." },
+        reply: {
+          text: "System: Group activation only applies to group chats.",
+        },
       };
     }
     if (!command.isAuthorizedSender) {
@@ -495,7 +497,9 @@ export async function handleCommands(params: {
     }
     return {
       shouldContinue: false,
-      reply: { text: `System: Group activation set to ${activationCommand.mode}.` },
+      reply: {
+        text: `System: Group activation set to ${activationCommand.mode}.`,
+      },
     };
   }
 
@@ -745,7 +749,9 @@ export async function handleCommands(params: {
       if (!removed) {
         return {
           shouldContinue: false,
-          reply: { text: `System: No config value found for ${configCommand.path}.` },
+          reply: {
+            text: `System: No config value found for ${configCommand.path}.`,
+          },
         };
       }
       const validated = validateConfigObject(parsedBase);
@@ -761,7 +767,9 @@ export async function handleCommands(params: {
       await writeConfigFile(validated.config);
       return {
         shouldContinue: false,
-        reply: { text: `System: Config updated: ${configCommand.path} removed.` },
+        reply: {
+          text: `System: Config updated: ${configCommand.path} removed.`,
+        },
       };
     }
 
@@ -843,7 +851,9 @@ export async function handleCommands(params: {
       resetConfigOverrides();
       return {
         shouldContinue: false,
-        reply: { text: "System: Debug overrides cleared; using config on disk." },
+        reply: {
+          text: "System: Debug overrides cleared; using config on disk.",
+        },
       };
     }
     if (debugCommand.action === "unset") {
@@ -864,7 +874,9 @@ export async function handleCommands(params: {
       }
       return {
         shouldContinue: false,
-        reply: { text: `System: Debug override removed for ${debugCommand.path}.` },
+        reply: {
+          text: `System: Debug override removed for ${debugCommand.path}.`,
+        },
       };
     }
     if (debugCommand.action === "set") {
@@ -915,7 +927,10 @@ export async function handleCommands(params: {
     } else if (command.abortKey) {
       setAbortMemory(command.abortKey, true);
     }
-    return { shouldContinue: false, reply: { text: "System: Agent was aborted." } };
+    return {
+      shouldContinue: false,
+      reply: { text: "System: Agent was aborted." },
+    };
   }
 
   const compactRequested =
@@ -1018,7 +1033,10 @@ export async function handleCommands(params: {
     } else if (command.abortKey) {
       setAbortMemory(command.abortKey, true);
     }
-    return { shouldContinue: false, reply: { text: "System: Agent was aborted." } };
+    return {
+      shouldContinue: false,
+      reply: { text: "System: Agent was aborted." },
+    };
   }
 
   const sendPolicy = resolveSendPolicy({

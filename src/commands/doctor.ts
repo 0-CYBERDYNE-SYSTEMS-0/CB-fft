@@ -203,7 +203,8 @@ export async function doctorCommand(
       const git = await detectClawdbotGitCheckout(root);
       if (git === "git") {
         const shouldUpdate = await prompter.confirm({
-          message: "Update Farm Friend Terminal from git before running doctor?",
+          message:
+            "Update Farm Friend Terminal from git before running doctor?",
           initialValue: true,
         });
         if (shouldUpdate) {

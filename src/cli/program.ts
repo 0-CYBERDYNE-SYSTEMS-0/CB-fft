@@ -13,6 +13,7 @@ import {
 import { dashboardCommand } from "../commands/dashboard.js";
 import { doctorCommand } from "../commands/doctor.js";
 import { healthCommand } from "../commands/health.js";
+import { securityCommand } from "../commands/security.js";
 import { messageCommand } from "../commands/message.js";
 import { onboardCommand } from "../commands/onboard.js";
 import { resetCommand } from "../commands/reset.js";
@@ -482,6 +483,29 @@ export function buildProgram() {
         defaultRuntime.exit(1);
       }
     });
+
+  const security = program
+    .command("security")
+    .description("Security audit for providers and configuration");
+
+  security
+    .command("audit")
+    .description("Run security audit")
+    .option("--deep", "Run deeper security checks", false)
+    .action(async (opts) => {
+      try {
+        await securityCommand(defaultRuntime, {
+          deep: Boolean(opts.deep),
+        });
+      } catch (err) {
+        defaultRuntime.error(String(err));
+        defaultRuntime.exit(1);
+      }
+    });
+
+  security.action(async () => {
+    security.help({ error: true });
+  });
 
   program
     .command("dashboard")

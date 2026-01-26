@@ -885,7 +885,7 @@ export async function runOnboardingWizard(
 
   await prompter.outro(
     controlUiOpened
-    ? "Setup complete. Dashboard opened with your token; keep that tab to control the console."
-    : "Setup complete. Use the tokenized dashboard link above to control the console.",
+      ? "Setup complete. Dashboard opened with your token; keep that tab to control the console."
+      : "Setup complete. Use the tokenized dashboard link above to control the console.",
   );
 }

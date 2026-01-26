@@ -240,7 +240,9 @@ export function formatSkillInfo(
     if (skill.requirements.os.length > 0) {
       const osStatus = skill.requirements.os.map((osName) => {
         const missing = skill.missing.os.includes(osName);
-        return missing ? chalk.red(`missing ${osName}`) : chalk.green(`ok ${osName}`);
+        return missing
+          ? chalk.red(`missing ${osName}`)
+          : chalk.green(`ok ${osName}`);
       });
       lines.push(`  OS: ${osStatus.join(", ")}`);
     }
@@ -304,8 +306,12 @@ export function formatSkillsCheck(
   lines.push(`Total: ${report.skills.length}`);
   lines.push(`${chalk.green("ok")} Eligible: ${eligible.length}`);
   lines.push(`${chalk.yellow("disabled")} Disabled: ${disabled.length}`);
-  lines.push(`${chalk.yellow("blocked")} Blocked by allowlist: ${blocked.length}`);
-  lines.push(`${chalk.red("missing")} Missing requirements: ${missingReqs.length}`);
+  lines.push(
+    `${chalk.yellow("blocked")} Blocked by allowlist: ${blocked.length}`,
+  );
+  lines.push(
+    `${chalk.red("missing")} Missing requirements: ${missingReqs.length}`,
+  );
 
   if (eligible.length > 0) {
     lines.push("");
@@ -335,9 +341,7 @@ export function formatSkillsCheck(
       if (skill.missing.os.length > 0) {
         missing.push(`os: ${skill.missing.os.join(", ")}`);
       }
-      lines.push(
-        `  ${skill.name} ${chalk.gray(`(${missing.join("; ")})`)}`,
-      );
+      lines.push(`  ${skill.name} ${chalk.gray(`(${missing.join("; ")})`)}`);
     }
   }
 
